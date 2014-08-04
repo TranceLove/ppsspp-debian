@@ -1,0 +1,148 @@
+Index: ppsspp-upstream/Core/HLE/sceAtrac.cpp
+===================================================================
+--- ppsspp-upstream.orig/Core/HLE/sceAtrac.cpp	2014-08-03 23:44:15.008768058 -0300
++++ ppsspp-upstream/Core/HLE/sceAtrac.cpp	2014-08-02 00:41:46.000000000 -0300
+@@ -75,9 +75,9 @@
+ #ifdef USE_FFMPEG
+ 
+ extern "C" {
+-#include <libavformat/avformat.h>
+-#include <libswresample/swresample.h>
+-#include <libavutil/samplefmt.h>
++#include "libavformat/avformat.h"
++#include "libswresample/swresample.h"
++#include "libavutil/samplefmt.h"
+ }
+ 
+ #endif // USE_FFMPEG
+Index: ppsspp-upstream/Core/HLE/sceMpeg.cpp
+===================================================================
+--- ppsspp-upstream.orig/Core/HLE/sceMpeg.cpp	2014-08-03 23:44:15.016768058 -0300
++++ ppsspp-upstream/Core/HLE/sceMpeg.cpp	2014-08-02 00:39:24.000000000 -0300
+@@ -95,8 +95,8 @@
+ #ifdef USE_FFMPEG 
+ 
+ extern "C" {
+-#include <libavformat/avformat.h>
+-#include <libswscale/swscale.h>
++#include "libavformat/avformat.h"
++#include "libswscale/swscale.h"
+ }
+ static AVPixelFormat pmp_want_pix_fmt;
+ 
+Index: ppsspp-upstream/Core/HW/SimpleAudioDec.cpp
+===================================================================
+--- ppsspp-upstream.orig/Core/HW/SimpleAudioDec.cpp	2014-08-03 23:44:15.020768058 -0300
++++ ppsspp-upstream/Core/HW/SimpleAudioDec.cpp	2014-08-02 00:41:38.000000000 -0300
+@@ -26,9 +26,9 @@
+ #ifdef USE_FFMPEG
+ 
+ extern "C" {
+-#include <libavformat/avformat.h>
+-#include <libswresample/swresample.h>
+-#include <libavutil/samplefmt.h>
++#include "libavformat/avformat.h"
++#include "libswresample/swresample.h"
++#include "libavutil/samplefmt.h"
+ }
+ 
+ #endif  // USE_FFMPEG
+Index: ppsspp-upstream/UI/NativeApp.cpp
+===================================================================
+--- ppsspp-upstream.orig/UI/NativeApp.cpp	2014-08-03 23:44:15.052768058 -0300
++++ ppsspp-upstream/UI/NativeApp.cpp	2014-08-03 16:51:34.176950000 -0300
+@@ -278,7 +278,7 @@
+ #else
+ 	VFSRegister("", new DirectoryAssetReader("assets/"));
+ #endif
+-	VFSRegister("", new DirectoryAssetReader(savegame_directory));
++	VFSRegister("", new DirectoryAssetReader("/usr/share/ppsspp/assets/"));
+ 
+ #if defined(MOBILE_DEVICE) || !defined(USING_QT_UI)
+ 	host = new NativeHost();
+Index: ppsspp-upstream/native/ext/glew/GL/glxew.h
+===================================================================
+--- ppsspp-upstream.orig/native/ext/glew/GL/glxew.h	2014-08-03 23:50:41.172765209 -0300
++++ ppsspp-upstream/native/ext/glew/GL/glxew.h	2014-08-02 00:44:36.000000000 -0300
+@@ -97,7 +97,7 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xmd.h>
+-#include <GL/glew.h>
++#include "glew.h"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: ppsspp-upstream/native/ext/glew/glew.c
+===================================================================
+--- ppsspp-upstream.orig/native/ext/glew/glew.c	2014-08-03 23:50:41.176765209 -0300
++++ ppsspp-upstream/native/ext/glew/glew.c	2014-08-02 00:45:18.000000000 -0300
+@@ -29,12 +29,12 @@
+ ** THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ 
+-#include <GL/glew.h>
++#include "GL/glew.h"
+ 
+ #if defined(_WIN32)
+-#  include <GL/wglew.h>
++#  include "GL/wglew.h"
+ #elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
+-#  include <GL/glxew.h>
++#  include "GL/glxew.h"
+ #endif
+ 
+ /*
+Index: ppsspp-upstream/native/ext/glew/glewinfo.c
+===================================================================
+--- ppsspp-upstream.orig/native/ext/glew/glewinfo.c	2014-08-03 23:50:41.176765209 -0300
++++ ppsspp-upstream/native/ext/glew/glewinfo.c	2014-08-02 00:45:43.000000000 -0300
+@@ -32,11 +32,11 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <GL/glew.h>
++#include "GL/glew.h"
+ #if defined(_WIN32)
+-#include <GL/wglew.h>
++#include "GL/wglew.h"
+ #elif !defined(__APPLE__) || defined(GLEW_APPLE_GLX)
+-#include <GL/glxew.h>
++#include "GL/glxew.h"
+ #endif
+ 
+ #ifdef GLEW_REGAL
+Index: ppsspp-upstream/native/ext/glew/visualinfo.c
+===================================================================
+--- ppsspp-upstream.orig/native/ext/glew/visualinfo.c	2014-08-03 23:50:41.176765209 -0300
++++ ppsspp-upstream/native/ext/glew/visualinfo.c	2014-08-02 00:46:13.000000000 -0300
+@@ -32,13 +32,13 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <GL/glew.h>
++#include "GL/glew.h"
+ #if defined(_WIN32)
+-#include <GL/wglew.h>
++#include "GL/wglew.h"
+ #elif defined(__APPLE__) && !defined(GLEW_APPLE_GLX)
+ #include <AGL/agl.h>
+ #else
+-#include <GL/glxew.h>
++#include "GL/glxew.h"
+ #endif
+ 
+ #ifdef GLEW_MX
+Index: ppsspp-upstream/native/gfx/gl_common.h
+===================================================================
+--- ppsspp-upstream.orig/native/gfx/gl_common.h	2014-08-03 23:50:41.188765209 -0300
++++ ppsspp-upstream/native/gfx/gl_common.h	2014-08-02 00:46:50.000000000 -0300
+@@ -11,7 +11,7 @@
+ typedef char GLchar;
+ #define GL_BGRA_EXT 0x80E1
+ #else // OpenGL
+-#include <GL/glew.h>
++#include "GL/glew.h"
+ #if defined(__APPLE__)
+ #include <OpenGL/gl.h>
+ #else
