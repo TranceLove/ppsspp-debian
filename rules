@@ -45,6 +45,6 @@ endif
 override_dh_auto_install:
 	# Add here commands to install the package into debian/retroarch.
 	#$(MAKE) -C build-qt DESTDIR=$(CURDIR)/debian/ppsspp PREFIX=/usr install  # make install of ppsspp installs only icons... needs improvement by upstream
-	cp $(CURDIR)/Qt/PPSSPPQt $(CURDIR)/debian/ppsspp-qt/usr/games/ppsspp
+	cp $(CURDIR)/Qt/ppsspp $(CURDIR)/debian/ppsspp-qt/usr/games/ppsspp
 	cp $(CURDIR)/debian/ppsspp-qt.desktop $(CURDIR)/debian/ppsspp-qt/usr/share/applications/
 	cp -r $(CURDIR)/assets/unix-icons/hicolor/* $(CURDIR)/debian/ppsspp-qt/usr/share/icons/hicolor/
