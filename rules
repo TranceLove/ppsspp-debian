@@ -26,6 +26,9 @@ patch:
 unpatch:
 	$(UNPATCH)
 
+%:
+	dh $@ --parallel
+
 override_dh_auto_configure:
 	qmake Qt/PPSSPPQt.pro
 
@@ -45,6 +48,3 @@ override_dh_auto_install:
 	cp $(CURDIR)/Qt/PPSSPPQt $(CURDIR)/debian/ppsspp-qt/usr/games/ppsspp
 	cp $(CURDIR)/debian/ppsspp-qt.desktop $(CURDIR)/debian/ppsspp-qt/usr/share/applications/
 	cp -r $(CURDIR)/assets/unix-icons/hicolor/* $(CURDIR)/debian/ppsspp-qt/usr/share/icons/hicolor/
-
-%:
-	dh $@ --parallel
