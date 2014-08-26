@@ -1,7 +1,7 @@
 Index: ppsspp/Core/HLE/sceAtrac.cpp
 ===================================================================
---- ppsspp.orig/Core/HLE/sceAtrac.cpp	2014-08-26 19:33:13.237603921 -0300
-+++ ppsspp/Core/HLE/sceAtrac.cpp	2014-08-26 20:12:49.289586392 -0300
+--- ppsspp.orig/Core/HLE/sceAtrac.cpp	2014-08-26 20:34:52.809576627 -0300
++++ ppsspp/Core/HLE/sceAtrac.cpp	2014-08-26 20:35:54.421576173 -0300
 @@ -75,9 +75,9 @@
  #ifdef USE_FFMPEG
  
@@ -17,8 +17,8 @@ Index: ppsspp/Core/HLE/sceAtrac.cpp
  #endif // USE_FFMPEG
 Index: ppsspp/Core/HLE/sceMpeg.cpp
 ===================================================================
---- ppsspp.orig/Core/HLE/sceMpeg.cpp	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/Core/HLE/sceMpeg.cpp	2014-08-26 20:13:18.193586178 -0300
+--- ppsspp.orig/Core/HLE/sceMpeg.cpp	2014-08-26 20:34:47.697576665 -0300
++++ ppsspp/Core/HLE/sceMpeg.cpp	2014-08-26 20:35:57.873576147 -0300
 @@ -95,8 +95,8 @@
  #ifdef USE_FFMPEG 
  
@@ -32,8 +32,8 @@ Index: ppsspp/Core/HLE/sceMpeg.cpp
  
 Index: ppsspp/Core/HW/SimpleAudioDec.cpp
 ===================================================================
---- ppsspp.orig/Core/HW/SimpleAudioDec.cpp	2014-08-26 19:33:13.237603921 -0300
-+++ ppsspp/Core/HW/SimpleAudioDec.cpp	2014-08-26 20:13:39.813586019 -0300
+--- ppsspp.orig/Core/HW/SimpleAudioDec.cpp	2014-08-26 20:34:42.777576701 -0300
++++ ppsspp/Core/HW/SimpleAudioDec.cpp	2014-08-26 20:36:02.017576117 -0300
 @@ -26,9 +26,9 @@
  #ifdef USE_FFMPEG
  
@@ -49,9 +49,9 @@ Index: ppsspp/Core/HW/SimpleAudioDec.cpp
  #endif  // USE_FFMPEG
 Index: ppsspp/native/ext/glew/GL/glxew.h
 ===================================================================
---- ppsspp.orig/native/ext/glew/GL/glxew.h	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/native/ext/glew/GL/glxew.h	2014-08-26 20:14:11.313585787 -0300
-@@ -97,7 +97,7 @@
+--- ppsspp.orig/native/ext/glew/GL/glxew.h	2014-08-26 20:27:28.657579904 -0300
++++ ppsspp/native/ext/glew/GL/glxew.h	2014-08-26 20:36:17.389576003 -0300
+@@ -98,7 +98,7 @@
  #include <X11/Xlib.h>
  #include <X11/Xutil.h>
  #include <X11/Xmd.h>
@@ -62,9 +62,9 @@ Index: ppsspp/native/ext/glew/GL/glxew.h
  extern "C" {
 Index: ppsspp/native/ext/glew/glew.c
 ===================================================================
---- ppsspp.orig/native/ext/glew/glew.c	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/native/ext/glew/glew.c	2014-08-26 20:15:13.837585325 -0300
-@@ -29,12 +29,12 @@
+--- ppsspp.orig/native/ext/glew/glew.c	2014-08-26 20:27:28.661579904 -0300
++++ ppsspp/native/ext/glew/glew.c	2014-08-26 20:37:50.921575313 -0300
+@@ -30,12 +30,12 @@
  ** THE POSSIBILITY OF SUCH DAMAGE.
  */
  
@@ -73,17 +73,17 @@ Index: ppsspp/native/ext/glew/glew.c
  
  #if defined(_WIN32)
  #  include <GL/wglew.h>
- #elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
+ #elif !defined(__ANDROID__) && !defined(__native_client__) && !defined(__HAIKU__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
 -#  include <GL/glxew.h>
 +#  include "GL/glxew.h"
  #endif
  
- /*
+ #include <stddef.h>  /* For size_t */
 Index: ppsspp/native/ext/glew/glewinfo.c
 ===================================================================
---- ppsspp.orig/native/ext/glew/glewinfo.c	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/native/ext/glew/glewinfo.c	2014-08-26 20:15:45.289585093 -0300
-@@ -32,11 +32,11 @@
+--- ppsspp.orig/native/ext/glew/glewinfo.c	2014-08-26 20:27:28.661579904 -0300
++++ ppsspp/native/ext/glew/glewinfo.c	2014-08-26 20:38:18.697575108 -0300
+@@ -33,11 +33,11 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
@@ -91,7 +91,7 @@ Index: ppsspp/native/ext/glew/glewinfo.c
 +#include "GL/glew.h"
  #if defined(_WIN32)
  #include <GL/wglew.h>
- #elif !defined(__APPLE__) || defined(GLEW_APPLE_GLX)
+ #elif !defined(__APPLE__) && !defined(__HAIKU__) || defined(GLEW_APPLE_GLX)
 -#include <GL/glxew.h>
 +#include "GL/glxew.h"
  #endif
@@ -99,9 +99,9 @@ Index: ppsspp/native/ext/glew/glewinfo.c
  #ifdef GLEW_REGAL
 Index: ppsspp/native/ext/glew/visualinfo.c
 ===================================================================
---- ppsspp.orig/native/ext/glew/visualinfo.c	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/native/ext/glew/visualinfo.c	2014-08-26 20:16:10.833584905 -0300
-@@ -32,13 +32,13 @@
+--- ppsspp.orig/native/ext/glew/visualinfo.c	2014-08-26 20:27:28.661579904 -0300
++++ ppsspp/native/ext/glew/visualinfo.c	2014-08-26 20:38:45.329574912 -0300
+@@ -33,13 +33,13 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
@@ -111,7 +111,7 @@ Index: ppsspp/native/ext/glew/visualinfo.c
  #include <GL/wglew.h>
  #elif defined(__APPLE__) && !defined(GLEW_APPLE_GLX)
  #include <AGL/agl.h>
- #else
+ #elif !defined(__HAIKU__)
 -#include <GL/glxew.h>
 +#include "GL/glxew.h"
  #endif
@@ -119,8 +119,8 @@ Index: ppsspp/native/ext/glew/visualinfo.c
  #ifdef GLEW_MX
 Index: ppsspp/native/gfx/gl_common.h
 ===================================================================
---- ppsspp.orig/native/gfx/gl_common.h	2014-08-13 00:13:42.000000000 -0300
-+++ ppsspp/native/gfx/gl_common.h	2014-08-26 20:16:27.121584785 -0300
+--- ppsspp.orig/native/gfx/gl_common.h	2014-08-26 20:18:01.000000000 -0300
++++ ppsspp/native/gfx/gl_common.h	2014-08-26 20:39:02.889574782 -0300
 @@ -11,7 +11,7 @@
  typedef char GLchar;
  #define GL_BGRA_EXT 0x80E1
