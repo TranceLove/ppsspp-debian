@@ -1,3 +1,9 @@
+ppsspp-qt (0.9.9.1-0ubuntu2) unstable; urgency=medium
+
+  * Change dependence to libsdl2-dev
+
+ -- Sérgio Benjamim <sergio_br2@yahoo.com.br>  Thu, 09 Oct 2014 23:02:00 -0300
+
 ppsspp-qt (0.9.9.1-0ubuntu1) unstable; urgency=medium
 
   * Upstream new release
