@@ -1,0 +1,35 @@
+Index: ppsspp/ffmpeg/linux_arm.sh
+===================================================================
+--- ppsspp.orig/ffmpeg/linux_arm.sh	2014-08-12 23:17:18.000000000 -0300
++++ ppsspp/ffmpeg/linux_arm.sh	2015-02-03 03:05:25.107328363 -0200
+@@ -1,13 +1,5 @@
+ #!/bin/bash
+ 
+-GENERAL="\
+-   --enable-cross-compile \
+-   --extra-libs="-lgcc" \
+-   --arch=arm \
+-   --cc=arm-linux-gnueabi-gcc \
+-   --cross-prefix=arm-linux-gnueabi- \
+-   --nm=arm-linux-gnueabi-nm"
+-
+ MODULES="\
+    --disable-avdevice \
+    --disable-filters \
+@@ -99,8 +91,7 @@
+ {
+ ./configure --target-os=linux \
+     --prefix=./linux/armv7 \
+-    ${GENERAL} \
+-    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=neon -marm -march=armv7-a" \
++    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=hard -mfpu=neon -marm -march=armv7-a" \
+     --disable-shared \
+     --enable-static \
+     --enable-zlib \
+@@ -117,6 +108,5 @@
+ make install
+ }
+ 
+-build_ARMv6
+ build_ARMv7
+ echo Linux ARM builds finished
