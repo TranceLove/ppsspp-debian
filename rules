@@ -16,23 +16,15 @@
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+export QT_SELECT := qt5
+
 ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-QUILT=QUILT_PATCHES=debian/patches quilt --quiltrc /dev/null
-PATCH := $(QUILT) push -a || [ "$$($(QUILT) applied)" = "$$(grep -v '^\#' debian/patches/series)" ]
-UNPATCH := $(QUILT) pop -a || [ "$$($(QUILT) applied 2>&1)" = "No patches applied" ]
-
-patch:
-	$(PATCH)
-	
-unpatch:
-	$(UNPATCH)
-
 %:
-	dh $@ --parallel
+	dh $@ --buildsystem=qmake --sourcedirectory="Qt/" --parallel
 
 override_dh_auto_configure:
-	qmake Qt/PPSSPPQt.pro
+	dh_auto_configure -- PPSSPPQt.pro
 
 override_dh_auto_build:
 ifeq ($(ARCH),amd64)
@@ -45,7 +37,7 @@ else ifeq ($(ARCH),armhf)
 	cd ffmpeg/ && \
 	./linux_arm.sh
 endif
-	$(MAKE) -C Qt/
+	dh_auto_build
 
 override_dh_auto_install:
 	# Add here commands to install the package into debian/retroarch.
