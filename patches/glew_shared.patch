@@ -1,7 +1,7 @@
 Index: ppsspp-git/Qt/Core.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Core.pro	2015-06-21 23:58:59.298096162 -0300
-+++ ppsspp-git/Qt/Core.pro	2015-06-22 00:03:18.231380143 -0300
+--- ppsspp-git.orig/Qt/Core.pro	2015-06-22 14:31:30.051740778 -0300
++++ ppsspp-git/Qt/Core.pro	2015-06-22 14:31:30.047740759 -0300
 @@ -6,7 +6,6 @@
  include(Settings.pri)
  
@@ -12,8 +12,8 @@ Index: ppsspp-git/Qt/Core.pro
  	SOURCES += $$P/Core/MIPS/ARM/*.cpp #CoreARM
 Index: ppsspp-git/Qt/GPU.pro
 ===================================================================
---- ppsspp-git.orig/Qt/GPU.pro	2015-06-21 23:58:54.298071368 -0300
-+++ ppsspp-git/Qt/GPU.pro	2015-06-22 00:03:14.015359237 -0300
+--- ppsspp-git.orig/Qt/GPU.pro	2015-06-22 14:31:30.051740778 -0300
++++ ppsspp-git/Qt/GPU.pro	2015-06-22 14:31:30.047740759 -0300
 @@ -7,7 +7,6 @@
  include(Settings.pri)
  
@@ -24,8 +24,8 @@ Index: ppsspp-git/Qt/GPU.pro
  	SOURCES += $$P/Windows/OpenGLBase.cpp
 Index: ppsspp-git/Qt/Native.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Native.pro	2015-06-21 23:58:45.126025887 -0300
-+++ ppsspp-git/Qt/Native.pro	2015-06-22 00:03:04.443311772 -0300
+--- ppsspp-git.orig/Qt/Native.pro	2015-06-22 14:31:30.051740778 -0300
++++ ppsspp-git/Qt/Native.pro	2015-06-22 14:31:30.047740759 -0300
 @@ -11,12 +11,6 @@
  
  INCLUDEPATH += $$P/native
@@ -41,18 +41,20 @@ Index: ppsspp-git/Qt/Native.pro
  SOURCES += $$P/native/ext/rg_etc1/rg_etc1.cpp
 Index: ppsspp-git/Qt/PPSSPP.pro
 ===================================================================
---- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-21 23:58:50.910054568 -0300
-+++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 00:03:09.779338231 -0300
-@@ -49,6 +49,8 @@
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 14:31:30.051740778 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 14:32:22.255999645 -0300
+@@ -49,6 +49,10 @@
  	}
  }
  
-+LIBS += -lGLEW
++exists( /usr/include/GL/glew.h ) {
++	LIBS += -lGLEW
++}
 +
  unix:contains(QT_CONFIG, system-zlib) {
  	LIBS += -lz
  }
-@@ -77,7 +79,7 @@
+@@ -77,7 +81,7 @@
  arm:android: SOURCES += $$P/android/jni/ArmEmitterTest.cpp
  HEADERS += $$P/UI/*.h
  
@@ -63,8 +65,8 @@ Index: ppsspp-git/Qt/PPSSPP.pro
  	!no_assets: RESOURCES += $$P/Qt/assets.qrc
 Index: ppsspp-git/native/gfx/gl_common.h
 ===================================================================
---- ppsspp-git.orig/native/gfx/gl_common.h	2015-06-21 23:59:04.458121749 -0300
-+++ ppsspp-git/native/gfx/gl_common.h	2015-06-22 00:03:22.315400394 -0300
+--- ppsspp-git.orig/native/gfx/gl_common.h	2015-06-22 14:31:30.051740778 -0300
++++ ppsspp-git/native/gfx/gl_common.h	2015-06-22 14:31:30.051740778 -0300
 @@ -11,7 +11,7 @@
  typedef char GLchar;
  #define GL_BGRA_EXT 0x80E1

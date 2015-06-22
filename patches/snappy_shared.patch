@@ -1,7 +1,7 @@
 Index: ppsspp-git/Common/ChunkFile.h
 ===================================================================
---- ppsspp-git.orig/Common/ChunkFile.h	2015-06-21 18:00:45.055511969 -0300
-+++ ppsspp-git/Common/ChunkFile.h	2015-06-22 00:52:01.073873736 -0300
+--- ppsspp-git.orig/Common/ChunkFile.h	2015-06-22 14:43:12.731225178 -0300
++++ ppsspp-git/Common/ChunkFile.h	2015-06-22 14:43:12.727225158 -0300
 @@ -40,7 +40,7 @@
  
  #include "Common.h"
@@ -13,8 +13,8 @@ Index: ppsspp-git/Common/ChunkFile.h
  namespace std {
 Index: ppsspp-git/Qt/Native.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Native.pro	2015-06-22 00:50:48.209512421 -0300
-+++ ppsspp-git/Qt/Native.pro	2015-06-22 00:58:34.595825106 -0300
+--- ppsspp-git.orig/Qt/Native.pro	2015-06-22 14:43:12.731225178 -0300
++++ ppsspp-git/Qt/Native.pro	2015-06-22 14:43:12.731225178 -0300
 @@ -34,12 +34,6 @@
  HEADERS += $$P/native/ext/stb_vorbis/stb_vorbis.h
  INCLUDEPATH += $$P/native/ext/stb_vorbis
@@ -30,14 +30,14 @@ Index: ppsspp-git/Qt/Native.pro
  SOURCES += $$P/ext/udis86/*.c
 Index: ppsspp-git/Qt/PPSSPP.pro
 ===================================================================
---- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 00:59:33.820118784 -0300
-+++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 00:59:52.212209985 -0300
-@@ -49,7 +49,7 @@
- 	}
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 14:43:12.279222936 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 14:44:17.899548330 -0300
+@@ -53,6 +53,8 @@
+ 	LIBS += -lGLEW
  }
  
--LIBS += -lGLEW
-+LIBS += -lGLEW -lsnappy
- 
++LIBS += -lsnappy
++
  unix:contains(QT_CONFIG, system-zlib) {
  	LIBS += -lz
+ }
