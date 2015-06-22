@@ -1,1 +1,6 @@
+glew_shared.patch
+snappy_shared.patch
+zlib_shared.patch
+libzip_shared.patch
+tools.patch
 arm.patch

@@ -1,0 +1,76 @@
+Index: ppsspp-git/Qt/Core.pro
+===================================================================
+--- ppsspp-git.orig/Qt/Core.pro	2015-06-21 23:58:59.298096162 -0300
++++ ppsspp-git/Qt/Core.pro	2015-06-22 00:03:18.231380143 -0300
+@@ -6,7 +6,6 @@
+ include(Settings.pri)
+ 
+ INCLUDEPATH += $$P/ $$P/native $$P/Core/MIPS $$P/ext/xbrz
+-!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/native/ext/glew
+ 
+ arm {
+ 	SOURCES += $$P/Core/MIPS/ARM/*.cpp #CoreARM
+Index: ppsspp-git/Qt/GPU.pro
+===================================================================
+--- ppsspp-git.orig/Qt/GPU.pro	2015-06-21 23:58:54.298071368 -0300
++++ ppsspp-git/Qt/GPU.pro	2015-06-22 00:03:14.015359237 -0300
+@@ -7,7 +7,6 @@
+ include(Settings.pri)
+ 
+ INCLUDEPATH += $$P/ $$P/native
+-!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/native/ext/glew
+ 
+ win32 {
+ 	SOURCES += $$P/Windows/OpenGLBase.cpp
+Index: ppsspp-git/Qt/Native.pro
+===================================================================
+--- ppsspp-git.orig/Qt/Native.pro	2015-06-21 23:58:45.126025887 -0300
++++ ppsspp-git/Qt/Native.pro	2015-06-22 00:03:04.443311772 -0300
+@@ -11,12 +11,6 @@
+ 
+ INCLUDEPATH += $$P/native
+ 
+-!contains(DEFINES,USING_GLES2) {
+-	SOURCES += $$P/native/ext/glew/glew.c
+-	HEADERS += $$P/native/ext/glew/GL/*.h
+-	INCLUDEPATH += $$P/native/ext/glew
+-}
+-
+ # RG_ETC1
+ 
+ SOURCES += $$P/native/ext/rg_etc1/rg_etc1.cpp
+Index: ppsspp-git/Qt/PPSSPP.pro
+===================================================================
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-21 23:58:50.910054568 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 00:03:09.779338231 -0300
+@@ -49,6 +49,8 @@
+ 	}
+ }
+ 
++LIBS += -lGLEW
++
+ unix:contains(QT_CONFIG, system-zlib) {
+ 	LIBS += -lz
+ }
+@@ -77,7 +79,7 @@
+ arm:android: SOURCES += $$P/android/jni/ArmEmitterTest.cpp
+ HEADERS += $$P/UI/*.h
+ 
+-INCLUDEPATH += $$P $$P/Common $$P/native $$P/native/ext $$P/native/ext/glew
++INCLUDEPATH += $$P $$P/Common $$P/native $$P/native/ext
+ 
+ mobile_platform {
+ 	!no_assets: RESOURCES += $$P/Qt/assets.qrc
+Index: ppsspp-git/native/gfx/gl_common.h
+===================================================================
+--- ppsspp-git.orig/native/gfx/gl_common.h	2015-06-21 23:59:04.458121749 -0300
++++ ppsspp-git/native/gfx/gl_common.h	2015-06-22 00:03:22.315400394 -0300
+@@ -11,7 +11,7 @@
+ typedef char GLchar;
+ #define GL_BGRA_EXT 0x80E1
+ #else // OpenGL
+-#include "GL/glew.h"
++#include <GL/glew.h>
+ #if defined(__APPLE__)
+ #include <OpenGL/gl.h>
+ #else

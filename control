@@ -4,11 +4,16 @@ Priority: extra
 Maintainer: Sérgio Benjamim <sergio_br2@yahoo.com.br>
 Build-Depends: debhelper (>= 9),
                clang [armhf],
+               libfreetype6-dev,
+               libglew-dev [!armhf],
                libqt5opengl5-dev,
                libsdl2-dev,
+               libsnappy-dev,
+               libzip-dev,
                qt5-qmake,
                qtbase5-dev,
-               qttools5-dev-tools
+               qttools5-dev-tools,
+               zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://www.ppsspp.org
 Vcs-Git: git://github.com/hrydgard/ppsspp.git

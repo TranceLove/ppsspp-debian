@@ -1,0 +1,63 @@
+Index: ppsspp-git/Core/Util/GameManager.cpp
+===================================================================
+--- ppsspp-git.orig/Core/Util/GameManager.cpp	2015-06-22 03:50:36.955010921 -0300
++++ ppsspp-git/Core/Util/GameManager.cpp	2015-06-22 03:50:36.951010901 -0300
+@@ -20,7 +20,7 @@
+ #include <cstring>
+ 
+ #include "file/file_util.h"
+-#include "ext/libzip/zip.h"
++#include <zip.h>
+ #include "thread/thread.h"
+ #include "util/text/utf8.h"
+ 
+Index: ppsspp-git/Qt/PPSSPP.pro
+===================================================================
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 03:50:36.955010921 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 03:50:36.951010901 -0300
+@@ -49,7 +49,7 @@
+ 	}
+ }
+ 
+-LIBS += -lGLEW -lsnappy
++LIBS += -lGLEW -lsnappy -lzip
+ 
+ unix:contains(QT_CONFIG, system-zlib) {
+ 	LIBS += -lz
+Index: ppsspp-git/Qt/Native.pro
+===================================================================
+--- ppsspp-git.orig/Qt/Native.pro	2015-06-22 03:50:36.955010921 -0300
++++ ppsspp-git/Qt/Native.pro	2015-06-22 03:50:36.951010901 -0300
+@@ -54,10 +54,6 @@
+ 	HEADERS += $$P/ext/zlib/*.h
+ }
+ 
+-# Libzip
+-SOURCES += $$P/native/ext/libzip/*.c
+-HEADERS += $$P/native/ext/libzip/*.h
+-
+ # Native
+ 
+ SOURCES +=  $$P/native/audio/*.cpp \
+Index: ppsspp-git/ext/libkirk/cmd
+===================================================================
+--- ppsspp-git.orig/ext/libkirk/cmd	2015-06-22 03:50:31.714984937 -0300
++++ ppsspp-git/ext/libkirk/cmd	2015-06-22 03:51:34.287295217 -0300
+@@ -54,7 +54,7 @@
+ kirk/libkirk.a
+ base/libtimeutil.a
+ kirk/libkirk.a
+-libzip/libzip.a
++-lzip
+ kirk/libkirk.a
+ base/libbase.a
+ kirk/libkirk.a
+@@ -84,7 +84,7 @@
+ kirk/libkirk.a
+ file/libfile.a
+ kirk/libkirk.a
+-libzip/libzip.a
++-lzip
+ kirk/libkirk.a
+ gfx/libgfx.a
+ kirk/libkirk.a

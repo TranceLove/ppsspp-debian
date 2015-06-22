@@ -1,0 +1,55 @@
+Index: ppsspp-git/native/tools/atlastool.cpp
+===================================================================
+--- ppsspp-git.orig/native/tools/atlastool.cpp	2015-06-22 03:21:57.574484974 -0300
++++ ppsspp-git/native/tools/atlastool.cpp	2015-06-22 03:21:57.566484934 -0300
+@@ -18,7 +18,7 @@
+ // Hackery for our broken path structure
+ #include <ftbitmap.h>
+ #else
+-#include <freetype/ftbitmap.h>
++#include <freetype2/ftbitmap.h>
+ #endif
+ #include <set>
+ #include <map>
+Index: ppsspp-git/native/tools/CMakeLists.txt
+===================================================================
+--- ppsspp-git.orig/native/tools/CMakeLists.txt	2015-06-22 03:21:43.118413290 -0300
++++ ppsspp-git/native/tools/CMakeLists.txt	2015-06-22 03:35:53.270628967 -0300
+@@ -27,19 +27,13 @@
+ include_directories(../ext)
+ include_directories(../math/lin)
+ include_directories(../image)
+-include_directories(../ext/libzip)
+ include_directories(../ext/rg_etc1)
+-include_directories(../ext/glew)
+-include_directories(/usr/local/include)
++include_directories(/usr/include/GL)
+ 
+ link_directories(/usr/X11R6/lib)
+-link_directories(/opt/local/lib)
+ 
+ # Horrible horrible hack
+ include_directories(/usr/include/freetype2)
+-include_directories(/usr/local/include/freetype2)
+-include_directories(/opt/local/include/freetype2)
+-include_directories(/opt/local/include)
+ 
+ add_subdirectory(../base base)
+ add_subdirectory(../gfx gfx)
+@@ -47,14 +41,13 @@
+ add_subdirectory(../image image)
+ add_subdirectory(../math math)
+ add_subdirectory(../util util)
+-add_subdirectory(../ext/libzip libzip)
+ add_subdirectory(../ext/rg_etc1 rg_etc1)
+ add_subdirectory(../ext/stb_image stb_image)
+ add_subdirectory(../ext/libpng17 png17)
+ 
+ 
+ add_executable(atlastool atlastool.cpp)
+-target_link_libraries(atlastool png17 freetype util image z stb_image rg_etc1 file zip base)
++target_link_libraries(atlastool png17 freetype util image GLEW zip z stb_image rg_etc1 file base)
+ 
+ add_executable(zimtool zimtool.cpp)
+-target_link_libraries(zimtool png17 freetype image z stb_image rg_etc1 file zip base)
++target_link_libraries(zimtool png17 freetype image GLEW zip z stb_image rg_etc1 file base)

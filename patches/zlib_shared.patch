@@ -1,0 +1,39 @@
+Index: ppsspp-git/Core/HLE/sceAdler.cpp
+===================================================================
+--- ppsspp-git.orig/Core/HLE/sceAdler.cpp	2015-06-21 18:00:45.079512088 -0300
++++ ppsspp-git/Core/HLE/sceAdler.cpp	2015-06-22 01:37:30.819409813 -0300
+@@ -15,7 +15,7 @@
+ // Official git repository and contact information can be found at
+ // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
+ 
+-#include "../ext/zlib/zlib.h"
++#include <zlib.h>
+ 
+ #include "sceAdler.h"
+ #include "Common/Log.h"
+Index: ppsspp-git/native/image/zim_load.cpp
+===================================================================
+--- ppsspp-git.orig/native/image/zim_load.cpp	2015-06-21 18:40:59.135482745 -0300
++++ ppsspp-git/native/image/zim_load.cpp	2015-06-22 01:39:37.996040448 -0300
+@@ -3,7 +3,7 @@
+ #include <stdlib.h>
+ 
+ #include "base/logging.h"
+-#include "zlib.h"
++#include <zlib.h>
+ #include "image/zim_load.h"
+ #include "file/vfs.h"
+ 
+Index: ppsspp-git/native/image/zim_save.cpp
+===================================================================
+--- ppsspp-git.orig/native/image/zim_save.cpp	2015-06-21 18:40:59.135482745 -0300
++++ ppsspp-git/native/image/zim_save.cpp	2015-06-22 01:39:26.627984077 -0300
+@@ -4,7 +4,7 @@
+ #include "base/logging.h"
+ #include "ext/rg_etc1/rg_etc1.h"
+ #include "image/zim_save.h"
+-#include "zlib.h"
++#include <zlib.h>
+ 
+ static const char magic[5] = "ZIMG";
+ 
