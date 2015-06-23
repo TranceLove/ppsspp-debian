@@ -1,0 +1,3 @@
+Qt/ppsspp usr/games
+debian/ppsspp-qt.desktop usr/share/applications
+assets/unix-icons/hicolor/* usr/share/icons/hicolor

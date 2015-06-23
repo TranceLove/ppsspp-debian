@@ -42,11 +42,16 @@ else ifeq ($(ARCH),armhf)
 	cd ffmpeg/ && \
 	./linux_arm.sh
 endif
+	mkdir native/tools/build
+	cd native/tools/build && \
+		cmake ../ && \
+		$(MAKE)
+	./buildatlas.sh
+	./build_ppgeatlas.sh
 	dh_auto_build
 
 override_dh_auto_install:
-	# Add here commands to install the package into debian/retroarch.
-	#$(MAKE) -C build-qt DESTDIR=$(CURDIR)/debian/ppsspp PREFIX=/usr install  # make install of ppsspp installs only icons... needs improvement by upstream
-	cp Qt/ppsspp debian/ppsspp-qt/usr/games/ppsspp
-	cp debian/ppsspp-qt.desktop debian/ppsspp-qt/usr/share/applications/
-	cp -r assets/unix-icons/hicolor/* debian/ppsspp-qt/usr/share/icons/hicolor/
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -r -f native/tools/build/

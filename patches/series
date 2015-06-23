@@ -3,4 +3,5 @@ snappy_shared.patch
 zlib_shared.patch
 libzip_shared.patch
 tools.patch
+fix-non-android.patch
 arm.patch
