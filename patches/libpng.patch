@@ -1,0 +1,26 @@
+Index: ppsspp-git/Core/Screenshot.cpp
+===================================================================
+--- ppsspp-git.orig/Core/Screenshot.cpp	2015-06-24 00:03:05.207054031 -0300
++++ ppsspp-git/Core/Screenshot.cpp	2015-06-24 00:03:14.675100981 -0300
+@@ -18,7 +18,7 @@
+ #ifdef USING_QT_UI
+ #include <QtGui/QImage>
+ #else
+-#include <libpng17/png.h>
++#include <libpng/png.h>
+ #include "ext/jpge/jpge.h"
+ #endif
+ 
+Index: ppsspp-git/native/image/png_load.cpp
+===================================================================
+--- ppsspp-git.orig/native/image/png_load.cpp	2015-06-24 00:03:23.467144578 -0300
++++ ppsspp-git/native/image/png_load.cpp	2015-06-24 00:03:43.063241750 -0300
+@@ -5,7 +5,7 @@
+ #ifdef USING_QT_UI
+ #include <QtGui/QImage>
+ #else
+-#include "libpng17/png.h"
++#include <libpng/png.h>
+ #endif
+ 
+ #include "png_load.h"

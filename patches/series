@@ -2,6 +2,7 @@ glew_shared.patch
 snappy_shared.patch
 zlib_shared.patch
 libzip_shared.patch
+libpng.patch
 tools.patch
 fix-non-android.patch
 arm.patch
