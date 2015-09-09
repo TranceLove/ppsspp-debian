@@ -1,7 +1,7 @@
 Index: ppsspp-git/Core/Util/GameManager.cpp
 ===================================================================
---- ppsspp-git.orig/Core/Util/GameManager.cpp	2015-06-22 14:44:41.099663373 -0300
-+++ ppsspp-git/Core/Util/GameManager.cpp	2015-06-22 14:44:41.095663353 -0300
+--- ppsspp-git.orig/Core/Util/GameManager.cpp	2015-09-09 00:19:28.798937916 -0300
++++ ppsspp-git/Core/Util/GameManager.cpp	2015-09-09 00:24:18.474803566 -0300
 @@ -20,7 +20,7 @@
  #include <cstring>
  
@@ -13,23 +13,36 @@ Index: ppsspp-git/Core/Util/GameManager.cpp
  
 Index: ppsspp-git/Qt/Native.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Native.pro	2015-06-22 14:44:41.099663373 -0300
-+++ ppsspp-git/Qt/Native.pro	2015-06-22 14:44:41.095663353 -0300
+--- ppsspp-git.orig/Qt/Native.pro	2015-09-09 00:19:28.798937916 -0300
++++ ppsspp-git/Qt/Native.pro	2015-09-09 00:24:43.426704692 -0300
 @@ -54,10 +54,6 @@
  	HEADERS += $$P/ext/zlib/*.h
  }
  
 -# Libzip
--SOURCES += $$P/native/ext/libzip/*.c
--HEADERS += $$P/native/ext/libzip/*.h
+-SOURCES += $$P/ext/native/ext/libzip/*.c
+-HEADERS += $$P/ext/native/ext/libzip/*.h
 -
  # Native
  
- SOURCES +=  $$P/native/audio/*.cpp \
+ SOURCES +=  $$P/ext/native/audio/*.cpp \
+Index: ppsspp-git/Qt/PPSSPP.pro
+===================================================================
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-09-09 00:19:28.802937932 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-09-09 00:25:57.994348054 -0300
+@@ -53,7 +53,7 @@
+ 	LIBS += -lGLEW
+ }
+ 
+-LIBS += -lsnappy
++LIBS += -lsnappy -lzip
+ 
+ unix:contains(QT_CONFIG, system-zlib) {
+ 	LIBS += -lz
 Index: ppsspp-git/ext/libkirk/cmd
 ===================================================================
---- ppsspp-git.orig/ext/libkirk/cmd	2015-06-22 14:44:41.099663373 -0300
-+++ ppsspp-git/ext/libkirk/cmd	2015-06-22 14:44:41.095663353 -0300
+--- ppsspp-git.orig/ext/libkirk/cmd	2015-09-09 00:19:28.798937916 -0300
++++ ppsspp-git/ext/libkirk/cmd	2015-09-09 00:25:28.122501728 -0300
 @@ -54,7 +54,7 @@
  kirk/libkirk.a
  base/libtimeutil.a
@@ -48,16 +61,3 @@ Index: ppsspp-git/ext/libkirk/cmd
  kirk/libkirk.a
  gfx/libgfx.a
  kirk/libkirk.a
-Index: ppsspp-git/Qt/PPSSPP.pro
-===================================================================
---- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 14:44:28.023598533 -0300
-+++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 14:45:12.215817670 -0300
-@@ -53,7 +53,7 @@
- 	LIBS += -lGLEW
- }
- 
--LIBS += -lsnappy
-+LIBS += -lsnappy -lzip
- 
- unix:contains(QT_CONFIG, system-zlib) {
- 	LIBS += -lz

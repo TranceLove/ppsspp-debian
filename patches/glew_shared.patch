@@ -1,48 +1,48 @@
 Index: ppsspp-git/Qt/Core.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Core.pro	2015-06-22 14:31:30.051740778 -0300
-+++ ppsspp-git/Qt/Core.pro	2015-06-22 14:31:30.047740759 -0300
+--- ppsspp-git.orig/Qt/Core.pro	2015-09-08 19:08:43.276369336 -0300
++++ ppsspp-git/Qt/Core.pro	2015-09-08 23:58:59.378964992 -0300
 @@ -6,7 +6,6 @@
  include(Settings.pri)
  
- INCLUDEPATH += $$P/ $$P/native $$P/Core/MIPS $$P/ext/xbrz
--!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/native/ext/glew
+ INCLUDEPATH += $$P/ $$P/ext/native $$P/Core/MIPS $$P/ext/xbrz
+-!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/ext/native/ext/glew
  
  arm {
  	SOURCES += $$P/Core/MIPS/ARM/*.cpp #CoreARM
 Index: ppsspp-git/Qt/GPU.pro
 ===================================================================
---- ppsspp-git.orig/Qt/GPU.pro	2015-06-22 14:31:30.051740778 -0300
-+++ ppsspp-git/Qt/GPU.pro	2015-06-22 14:31:30.047740759 -0300
+--- ppsspp-git.orig/Qt/GPU.pro	2015-09-08 19:08:43.276369336 -0300
++++ ppsspp-git/Qt/GPU.pro	2015-09-08 23:59:48.099459546 -0300
 @@ -7,7 +7,6 @@
  include(Settings.pri)
  
- INCLUDEPATH += $$P/ $$P/native
--!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/native/ext/glew
+ INCLUDEPATH += $$P/ $$P/ext/native
+-!contains(DEFINES, USING_GLES2): INCLUDEPATH += $$P/ext/native/ext/glew
  
  win32 {
  	SOURCES += $$P/Windows/OpenGLBase.cpp
 Index: ppsspp-git/Qt/Native.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Native.pro	2015-06-22 14:31:30.051740778 -0300
-+++ ppsspp-git/Qt/Native.pro	2015-06-22 14:31:30.047740759 -0300
+--- ppsspp-git.orig/Qt/Native.pro	2015-09-08 19:08:43.276369336 -0300
++++ ppsspp-git/Qt/Native.pro	2015-09-09 00:00:18.552459527 -0300
 @@ -11,12 +11,6 @@
  
- INCLUDEPATH += $$P/native
+ INCLUDEPATH += $$P/ext/native
  
 -!contains(DEFINES,USING_GLES2) {
--	SOURCES += $$P/native/ext/glew/glew.c
--	HEADERS += $$P/native/ext/glew/GL/*.h
--	INCLUDEPATH += $$P/native/ext/glew
+-	SOURCES += $$P/ext/native/ext/glew/glew.c
+-	HEADERS += $$P/ext/native/ext/glew/GL/*.h
+-	INCLUDEPATH += $$P/ext/native/ext/glew
 -}
 -
  # RG_ETC1
  
- SOURCES += $$P/native/ext/rg_etc1/rg_etc1.cpp
+ SOURCES += $$P/ext/native/ext/rg_etc1/rg_etc1.cpp
 Index: ppsspp-git/Qt/PPSSPP.pro
 ===================================================================
---- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 14:31:30.051740778 -0300
-+++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 14:32:22.255999645 -0300
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-09-08 19:08:43.276369336 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-09-09 00:01:49.625505767 -0300
 @@ -49,6 +49,10 @@
  	}
  }
@@ -58,15 +58,15 @@ Index: ppsspp-git/Qt/PPSSPP.pro
  arm:android: SOURCES += $$P/android/jni/ArmEmitterTest.cpp
  HEADERS += $$P/UI/*.h
  
--INCLUDEPATH += $$P $$P/Common $$P/native $$P/native/ext $$P/native/ext/glew
-+INCLUDEPATH += $$P $$P/Common $$P/native $$P/native/ext
+-INCLUDEPATH += $$P $$P/Common $$P/ext/native $$P/ext/native/ext $$P/ext/native/ext/glew
++INCLUDEPATH += $$P $$P/Common $$P/ext/native $$P/ext/native/ext
  
  mobile_platform {
  	!no_assets: RESOURCES += $$P/Qt/assets.qrc
 Index: ppsspp-git/native/gfx/gl_common.h
 ===================================================================
---- ppsspp-git.orig/native/gfx/gl_common.h	2015-06-22 14:31:30.051740778 -0300
-+++ ppsspp-git/native/gfx/gl_common.h	2015-06-22 14:31:30.051740778 -0300
+--- ppsspp-git.orig/native/gfx/gl_common.h	2015-09-08 19:09:15.720704387 -0300
++++ ppsspp-git/native/gfx/gl_common.h	2015-09-09 00:02:11.390394743 -0300
 @@ -11,7 +11,7 @@
  typedef char GLchar;
  #define GL_BGRA_EXT 0x80E1

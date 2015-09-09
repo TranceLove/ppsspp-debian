@@ -1,7 +1,7 @@
 Index: ppsspp-git/Common/ChunkFile.h
 ===================================================================
---- ppsspp-git.orig/Common/ChunkFile.h	2015-06-22 14:43:12.731225178 -0300
-+++ ppsspp-git/Common/ChunkFile.h	2015-06-22 14:43:12.727225158 -0300
+--- ppsspp-git.orig/Common/ChunkFile.h	2015-06-30 16:05:24.000000000 -0300
++++ ppsspp-git/Common/ChunkFile.h	2015-09-09 00:08:41.270924652 -0300
 @@ -40,7 +40,7 @@
  
  #include "Common.h"
@@ -13,11 +13,11 @@ Index: ppsspp-git/Common/ChunkFile.h
  namespace std {
 Index: ppsspp-git/Qt/Native.pro
 ===================================================================
---- ppsspp-git.orig/Qt/Native.pro	2015-06-22 14:43:12.731225178 -0300
-+++ ppsspp-git/Qt/Native.pro	2015-06-22 14:43:12.731225178 -0300
+--- ppsspp-git.orig/Qt/Native.pro	2015-09-09 00:05:24.034641844 -0300
++++ ppsspp-git/Qt/Native.pro	2015-09-09 00:08:13.435035878 -0300
 @@ -34,12 +34,6 @@
- HEADERS += $$P/native/ext/stb_vorbis/stb_vorbis.h
- INCLUDEPATH += $$P/native/ext/stb_vorbis
+ HEADERS += $$P/ext/native/ext/stb_vorbis/stb_vorbis.h
+ INCLUDEPATH += $$P/ext/native/ext/stb_vorbis
  
 -# Snappy
 -
@@ -30,8 +30,8 @@ Index: ppsspp-git/Qt/Native.pro
  SOURCES += $$P/ext/udis86/*.c
 Index: ppsspp-git/Qt/PPSSPP.pro
 ===================================================================
---- ppsspp-git.orig/Qt/PPSSPP.pro	2015-06-22 14:43:12.279222936 -0300
-+++ ppsspp-git/Qt/PPSSPP.pro	2015-06-22 14:44:17.899548330 -0300
+--- ppsspp-git.orig/Qt/PPSSPP.pro	2015-09-09 00:05:24.034641844 -0300
++++ ppsspp-git/Qt/PPSSPP.pro	2015-09-09 00:07:41.607111465 -0300
 @@ -53,6 +53,8 @@
  	LIBS += -lGLEW
  }
