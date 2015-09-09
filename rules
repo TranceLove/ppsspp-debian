@@ -42,8 +42,8 @@ else ifeq ($(ARCH),armhf)
 	cd ffmpeg/ && \
 	./linux_arm.sh
 endif
-	mkdir native/tools/build
-	cd native/tools/build && \
+	mkdir ext/native/tools/build
+	cd ext/native/tools/build && \
 		cmake ../ && \
 		$(MAKE)
 	./buildatlas.sh
@@ -54,4 +54,4 @@ override_dh_auto_install:
 
 override_dh_auto_clean:
 	dh_auto_clean
-	rm -r -f native/tools/build/
+	rm -r -f ext/native/tools/build/

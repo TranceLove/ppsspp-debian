@@ -1,7 +1,7 @@
 Index: ppsspp-git/native/tools/atlastool.cpp
 ===================================================================
---- ppsspp-git.orig/native/tools/atlastool.cpp	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/native/tools/atlastool.cpp	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2015-06-28 20:44:51.557996909 -0300
++++ ppsspp-git/ext/native/tools/atlastool.cpp	2015-06-28 20:44:51.553996857 -0300
 @@ -11,14 +11,14 @@
  // line height
  // dist-per-pixel
@@ -21,8 +21,8 @@ Index: ppsspp-git/native/tools/atlastool.cpp
  #include <map>
 Index: ppsspp-git/native/tools/CMakeLists.txt
 ===================================================================
---- ppsspp-git.orig/native/tools/CMakeLists.txt	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/native/tools/CMakeLists.txt	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2015-06-28 20:44:51.557996909 -0300
++++ ppsspp-git/ext/native/tools/CMakeLists.txt	2015-06-28 20:44:51.553996857 -0300
 @@ -27,19 +27,10 @@
  include_directories(../ext)
  include_directories(../math/lin)

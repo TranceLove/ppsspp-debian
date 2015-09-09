@@ -65,8 +65,8 @@ Index: ppsspp-git/Qt/PPSSPP.pro
  	!no_assets: RESOURCES += $$P/Qt/assets.qrc
 Index: ppsspp-git/native/gfx/gl_common.h
 ===================================================================
---- ppsspp-git.orig/native/gfx/gl_common.h	2015-09-08 19:09:15.720704387 -0300
-+++ ppsspp-git/native/gfx/gl_common.h	2015-09-09 00:02:11.390394743 -0300
+--- ppsspp-git.orig/ext/native/gfx/gl_common.h	2015-09-08 19:09:15.720704387 -0300
++++ ppsspp-git/ext/native/gfx/gl_common.h	2015-09-09 00:02:11.390394743 -0300
 @@ -11,7 +11,7 @@
  typedef char GLchar;
  #define GL_BGRA_EXT 0x80E1
