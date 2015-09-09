@@ -19,6 +19,15 @@ Index: ppsspp-git/native/tools/atlastool.cpp
  #endif
  #include <set>
  #include <map>
+@@ -188,7 +188,7 @@
+     png_destroy_write_struct(&png_ptr, &info_ptr);
+   }
+   void SaveZIM(const char *zim_name, int zim_format) {
+-    uint8 *image_data = new uint8[width() * height() * 4];
++    uint8_t *image_data = new uint8_t[width() * height() * 4];
+     for (int y = 0; y < height(); y++) {
+       memcpy(image_data + y * width() * 4, &dat[y][0], width() * 4);
+     }
 Index: ppsspp-git/native/tools/CMakeLists.txt
 ===================================================================
 --- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2015-06-28 20:44:51.557996909 -0300
@@ -96,7 +105,7 @@ Index: ppsspp-git/build_ppgeatlas.sh
 +++ ppsspp-git/build_ppgeatlas.sh	2015-06-28 20:44:51.553996857 -0300
 @@ -1 +1 @@
 -./atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && cp ppge_atlas.zim assets && mv ppge_atlas.zim android/assets
-+./native/tools/build/atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && mv ppge_atlas.zim assets
++./ext/native/tools/build/atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && mv ppge_atlas.zim assets
 Index: ppsspp-git/ppge_atlasscript.txt
 ===================================================================
 --- ppsspp-git.orig/ppge_atlasscript.txt	2015-06-28 20:44:51.557996909 -0300
