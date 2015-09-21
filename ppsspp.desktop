@@ -7,3 +7,4 @@ Comment=PlayStation Portable Simulator Suitable for Playing Portably (PPSSPP)
 Exec=ppsspp %f
 Icon=ppsspp
 Categories=Game
+Keywords=emulator;PSP;PlayStation;Portable;Sony;

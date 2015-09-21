@@ -1,6 +1,6 @@
-Source: ppsspp-qt
+Source: ppsspp
 Section: games
-Priority: extra
+Priority: optional
 Maintainer: Sérgio Benjamim <sergio_br2@yahoo.com.br>
 Build-Depends: debhelper (>= 9),
                clang [armhf],
@@ -10,6 +10,7 @@ Build-Depends: debhelper (>= 9),
                fonts-liberation,
                fonts-mona,
                fonts-nanum,
+               fonts-noto-hinted,
                fonts-roboto,
                fonts-unfonts-core,
                libfreetype6-dev,
@@ -25,13 +26,12 @@ Build-Depends: debhelper (>= 9),
                zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://www.ppsspp.org
-Vcs-Git: git://github.com/hrydgard/ppsspp.git
-Vcs-Browser: https://github.com/hrydgard/ppsspp
 
-Package: ppsspp-qt
+Package: ppsspp
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Conflicts: ppsspp-sdl
+Depends: ppsspp-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Replaces: ppsspp-qt (<< 1.0.1+r87.f4.p3.l1620.a161.t83~)
+Breaks: ppsspp-qt (<< 1.0.1+r87.f4.p3.l1620.a161.t83~)
 Description: Sony PSP emulator
  PPSSPP can run your PSP games on your PC in full HD resolution. It can even
  upscale textures that would otherwise be too blurry as they were made for
@@ -40,3 +40,15 @@ Description: Sony PSP emulator
  All trademarks are property of their respective owners. The emulator is for
  educational and development purposes only and it may not be used to play games
  you do not legally own.
+
+Package: ppsspp-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: Common files for PPSSPP
+ This package provides common files for PPSSPP.
+
+Package: ppsspp-qt
+Architecture: all
+Depends: ppsspp, ${misc:Depends}
+Description: Transitional package for ppsspp-qt
+ This is a transitional dummy package for ppsspp-qt. It can safely be removed.

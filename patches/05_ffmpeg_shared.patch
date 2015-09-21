@@ -1,0 +1,85 @@
+Description: shared FFmpeg
+Index: ppsspp/Qt/Settings.pri
+===================================================================
+--- ppsspp.orig/Qt/Settings.pri
++++ ppsspp/Qt/Settings.pri
+@@ -32,12 +32,10 @@ include(Platform/ArchDetection.pri)
+ # Work out platform name
+ include(Platform/OSDetection.pri)
+ # OS dependent paths
+-!system_ffmpeg: INCLUDEPATH += $$P/ffmpeg/$${PLATFORM_NAME}/$${PLATFORM_ARCH}/include
+ 
+ !contains(CONFIG, staticlib) {
+ 	QMAKE_LIBDIR += $$CONFIG_DIR
+-	!system_ffmpeg: QMAKE_LIBDIR += $$P/ffmpeg/$${PLATFORM_NAME}/$${PLATFORM_ARCH}/lib/
+-	contains(DEFINES, USE_FFMPEG): LIBS+=  -lavformat -lavcodec -lavutil -lswresample -lswscale
++	contains(DEFINES, USE_FFMPEG): LIBS+=  -lavformat-ffmpeg -lavcodec-ffmpeg -lavutil-ffmpeg -lswresample-ffmpeg -lswscale-ffmpeg
+ 	equals(PLATFORM_NAME, "linux"):arm|android: LIBS += -lEGL
+ }
+ 
+Index: ppsspp/Core/HLE/sceAtrac.cpp
+===================================================================
+--- ppsspp.orig/Core/HLE/sceAtrac.cpp
++++ ppsspp/Core/HLE/sceAtrac.cpp
+@@ -91,9 +91,9 @@ static const int atracDecodeDelay = 2300
+ #ifdef USE_FFMPEG
+ 
+ extern "C" {
+-#include "libavformat/avformat.h"
+-#include "libswresample/swresample.h"
+-#include "libavutil/samplefmt.h"
++#include <libavformat/avformat.h>
++#include <libswresample/swresample.h>
++#include <libavutil/samplefmt.h>
+ }
+ 
+ #endif // USE_FFMPEG
+Index: ppsspp/Core/HLE/sceMpeg.cpp
+===================================================================
+--- ppsspp.orig/Core/HLE/sceMpeg.cpp
++++ ppsspp/Core/HLE/sceMpeg.cpp
+@@ -97,8 +97,8 @@ static bool pmp_oldStateLoaded = false;
+ #ifdef USE_FFMPEG 
+ 
+ extern "C" {
+-#include "libavformat/avformat.h"
+-#include "libswscale/swscale.h"
++#include <libavformat/avformat.h>
++#include <libswscale/swscale.h>
+ }
+ static AVPixelFormat pmp_want_pix_fmt;
+ 
+Index: ppsspp/Core/HW/MediaEngine.cpp
+===================================================================
+--- ppsspp.orig/Core/HW/MediaEngine.cpp
++++ ppsspp/Core/HW/MediaEngine.cpp
+@@ -32,9 +32,9 @@
+ 
+ extern "C" {
+ 
+-#include "libavcodec/avcodec.h"
+-#include "libavformat/avformat.h"
+-#include "libswscale/swscale.h"
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
++#include <libswscale/swscale.h>
+ 
+ }
+ #endif // USE_FFMPEG
+Index: ppsspp/Core/HW/SimpleAudioDec.cpp
+===================================================================
+--- ppsspp.orig/Core/HW/SimpleAudioDec.cpp
++++ ppsspp/Core/HW/SimpleAudioDec.cpp
+@@ -26,9 +26,9 @@
+ #ifdef USE_FFMPEG
+ 
+ extern "C" {
+-#include "libavformat/avformat.h"
+-#include "libswresample/swresample.h"
+-#include "libavutil/samplefmt.h"
++#include <libavformat/avformat.h>
++#include <libswresample/swresample.h>
++#include <libavutil/samplefmt.h>
+ }
+ 
+ #endif  // USE_FFMPEG

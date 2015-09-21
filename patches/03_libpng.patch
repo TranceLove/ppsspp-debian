@@ -1,3 +1,4 @@
+Description: shared libpng
 Index: ppsspp-git/Core/Screenshot.cpp
 ===================================================================
 --- ppsspp-git.orig/Core/Screenshot.cpp	2015-06-25 15:37:39.000000000 -0300

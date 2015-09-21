@@ -1,8 +1,4 @@
-glew_shared.patch
-snappy_shared.patch
-zlib_shared.patch
-libzip_shared.patch
-libpng.patch
-tools.patch
-#fix-non-android.patch
-arm.patch
+01_fix_CMakeLists.patch
+03_libpng.patch
+04_tools.patch
+#05_ffmpeg_shared.patch

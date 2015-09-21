@@ -1,8 +1,9 @@
-Index: ppsspp-git/native/tools/atlastool.cpp
+Description: fix some atlas tools stuff, make it use fonts from the system. DroidSansThai.ttf maybe is better than NotoSansThai-Regular.ttf, but it's not in the repository anymore.
+Index: ppsspp-git/ext/native/tools/atlastool.cpp
 ===================================================================
---- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/ext/native/tools/atlastool.cpp	2015-06-28 20:44:51.553996857 -0300
-@@ -11,14 +11,14 @@
+--- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/ext/native/tools/atlastool.cpp	2015-09-20 23:57:07.859857420 -0300
+@@ -11,7 +11,7 @@
  // line height
  // dist-per-pixel
  
@@ -11,69 +12,10 @@ Index: ppsspp-git/native/tools/atlastool.cpp
  #include <ft2build.h>
  #include FT_FREETYPE_H
  #ifdef _WIN32
- // Hackery for our broken path structure
- #include <ftbitmap.h>
- #else
--#include <freetype/ftbitmap.h>
-+#include <freetype2/ftbitmap.h>
- #endif
- #include <set>
- #include <map>
-@@ -188,7 +188,7 @@
-     png_destroy_write_struct(&png_ptr, &info_ptr);
-   }
-   void SaveZIM(const char *zim_name, int zim_format) {
--    uint8 *image_data = new uint8[width() * height() * 4];
-+    uint8_t *image_data = new uint8_t[width() * height() * 4];
-     for (int y = 0; y < height(); y++) {
-       memcpy(image_data + y * width() * 4, &dat[y][0], width() * 4);
-     }
-Index: ppsspp-git/native/tools/CMakeLists.txt
-===================================================================
---- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/ext/native/tools/CMakeLists.txt	2015-06-28 20:44:51.553996857 -0300
-@@ -27,19 +27,10 @@
- include_directories(../ext)
- include_directories(../math/lin)
- include_directories(../image)
--include_directories(../ext/libzip)
- include_directories(../ext/rg_etc1)
--include_directories(../ext/glew)
--include_directories(/usr/local/include)
--
--link_directories(/usr/X11R6/lib)
--link_directories(/opt/local/lib)
- 
- # Horrible horrible hack
- include_directories(/usr/include/freetype2)
--include_directories(/usr/local/include/freetype2)
--include_directories(/opt/local/include/freetype2)
--include_directories(/opt/local/include)
- 
- add_subdirectory(../base base)
- add_subdirectory(../gfx gfx)
-@@ -47,14 +38,13 @@
- add_subdirectory(../image image)
- add_subdirectory(../math math)
- add_subdirectory(../util util)
--add_subdirectory(../ext/libzip libzip)
- add_subdirectory(../ext/rg_etc1 rg_etc1)
- add_subdirectory(../ext/stb_image stb_image)
--add_subdirectory(../ext/libpng17 png17)
-+add_subdirectory(../ext/libpng png)
- 
- 
- add_executable(atlastool atlastool.cpp)
--target_link_libraries(atlastool png17 freetype util image z stb_image rg_etc1 file zip base)
-+target_link_libraries(atlastool freetype util image png z stb_image rg_etc1 file base)
- 
- add_executable(zimtool zimtool.cpp)
--target_link_libraries(zimtool png17 freetype image z stb_image rg_etc1 file zip base)
-+target_link_libraries(zimtool freetype image png z stb_image rg_etc1 file base)
 Index: ppsspp-git/atlasscript.txt
 ===================================================================
---- ppsspp-git.orig/atlasscript.txt	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/atlasscript.txt	2015-06-28 20:45:33.042532718 -0300
+--- ppsspp-git.orig/atlasscript.txt	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/atlasscript.txt	2015-09-20 23:57:07.871857648 -0300
 @@ -1,6 +1,11 @@
  2048
 -font UBUNTU24 assets/RobotoCondensed-Regular.ttf UWER 34 -2
@@ -83,15 +25,15 @@ Index: ppsspp-git/atlasscript.txt
 +font UBUNTU24 /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf e 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/droid/DroidSansJapanese.ttf hkc 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/droid/DroidSansHebrew-Regular.ttf H 30 0
-+font UBUNTU24 assets/DroidSansThai.ttf T 30 0
++font UBUNTU24 /usr/share/fonts/truetype/noto/NotoSansThai-Regular.ttf T 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/unfonts-core/UnDotum.ttf K 30 0
  image I_SOLIDWHITE white.png copy
  image I_CROSS source_assets/image/cross.png copy
  image I_CIRCLE source_assets/image/circle.png copy
 Index: ppsspp-git/atlasscript_lowmem.txt
 ===================================================================
---- ppsspp-git.orig/atlasscript_lowmem.txt	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/atlasscript_lowmem.txt	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/atlasscript_lowmem.txt	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/atlasscript_lowmem.txt	2015-09-20 23:57:07.871857648 -0300
 @@ -1,5 +1,5 @@
  512
 -font UBUNTU24 assets/RobotoCondensed-Regular.ttf U 34 -2
@@ -101,15 +43,15 @@ Index: ppsspp-git/atlasscript_lowmem.txt
  image I_CIRCLE source_assets/image/circle.png copy
 Index: ppsspp-git/build_ppgeatlas.sh
 ===================================================================
---- ppsspp-git.orig/build_ppgeatlas.sh	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/build_ppgeatlas.sh	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/build_ppgeatlas.sh	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/build_ppgeatlas.sh	2015-09-20 23:57:07.871857648 -0300
 @@ -1 +1 @@
 -./atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && cp ppge_atlas.zim assets && mv ppge_atlas.zim android/assets
 +./ext/native/tools/build/atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && mv ppge_atlas.zim assets
 Index: ppsspp-git/ppge_atlasscript.txt
 ===================================================================
---- ppsspp-git.orig/ppge_atlasscript.txt	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/ppge_atlasscript.txt	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/ppge_atlasscript.txt	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/ppge_atlasscript.txt	2015-09-20 23:57:07.871857648 -0300
 @@ -1,5 +1,9 @@
  2048
 -font UBUNTU24 C:/Windows/Fonts/KozGoPro-Medium.otf UWkhcsGR 24
@@ -123,8 +65,8 @@ Index: ppsspp-git/ppge_atlasscript.txt
  image I_SQUARE source_assets/image/square.png copy
 Index: ppsspp-git/buildatlas.sh
 ===================================================================
---- ppsspp-git.orig/buildatlas.sh	2015-06-28 20:44:51.557996909 -0300
-+++ ppsspp-git/buildatlas.sh	2015-06-28 20:44:51.553996857 -0300
+--- ppsspp-git.orig/buildatlas.sh	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/buildatlas.sh	2015-09-20 23:57:07.887857954 -0300
 @@ -1,4 +1,4 @@
 -./ext/native/tools/build/atlastool atlasscript.txt ui 8888 && cp ui_atlas.zim assets && cp ui_atlas.zim android/assets && cp ui_atlas.zim.png ui_atlas_high.zim.png && mv ui_atlas.cpp ui_atlas_highmem.cpp && mv ui_atlas.h UI
 +./ext/native/tools/build/atlastool atlasscript.txt ui 8888 && cp ui_atlas.zim assets && cp ui_atlas.zim.png ui_atlas_high.zim.png && mv ui_atlas.cpp ui_atlas_highmem.cpp && mv ui_atlas.h UI
@@ -132,3 +74,47 @@ Index: ppsspp-git/buildatlas.sh
  diff -I'^//.*' -D USING_QT_UI ui_atlas_highmem.cpp ui_atlas_lowmem.cpp > UI/ui_atlas.cpp
 -rm ui_atlas_highmem.cpp ui_atlas_lowmem.cpp ui_atlas.h
 +rm -f ui_atlas_highmem.cpp ui_atlas_lowmem.cpp ui_atlas.h
+Index: ppsspp-git/ext/native/tools/CMakeLists.txt
+===================================================================
+--- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2015-09-20 23:57:07.891858031 -0300
++++ ppsspp-git/ext/native/tools/CMakeLists.txt	2015-09-21 11:08:24.610961850 -0300
+@@ -45,12 +45,11 @@
+ add_subdirectory(../math math)
+ add_subdirectory(../util util)
+ add_subdirectory(../ext/rg_etc1 rg_etc1)
+-add_subdirectory(../ext/stb_image stb_image)
+-add_subdirectory(../ext/libpng17 png17)
++add_subdirectory(../ext/libpng png)
+ 
+ 
+ add_executable(atlastool atlastool.cpp)
+-target_link_libraries(atlastool freetype util image png17 z stb_image rg_etc1 file base)
++target_link_libraries(atlastool freetype util image png z rg_etc1 file base)
+ 
+ add_executable(zimtool zimtool.cpp)
+-target_link_libraries(zimtool freetype image png17 z stb_image rg_etc1 file base)
++target_link_libraries(zimtool freetype image png z rg_etc1 file base)
+Index: ppsspp-git/ext/native/file/CMakeLists.txt
+===================================================================
+--- ppsspp-git.orig/ext/native/file/CMakeLists.txt	2015-09-21 11:07:20.172684530 -0300
++++ ppsspp-git/ext/native/file/CMakeLists.txt	2015-09-21 11:08:19.711628245 -0300
+@@ -1,8 +1,7 @@
+ set(SRCS
+   chunk_file.cpp
+   zip_read.cpp
+-  file_util.cpp
+-  dialog.cpp)
++  file_util.cpp)
+ 
+ set(SRCS ${SRCS})
+ 
+Index: ppsspp-git/ext/native/util/CMakeLists.txt
+===================================================================
+--- ppsspp-git.orig/ext/native/util/CMakeLists.txt	2015-09-21 11:07:16.937232027 -0300
++++ ppsspp-git/ext/native/util/CMakeLists.txt	2015-09-21 11:08:15.992141548 -0300
+@@ -1,5 +1,4 @@
+ set(SRCS
+-  bits/bits.cpp
+   hash/hash.cpp
+   text/utf8.cpp
+ )
