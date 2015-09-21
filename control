@@ -48,6 +48,7 @@ Description: Common files for PPSSPP
 
 Package: ppsspp-qt
 Architecture: all
+Section: oldlibs
 Depends: ppsspp, ${misc:Depends}
 Description: Transitional package for ppsspp-qt
  This is a transitional dummy package for ppsspp-qt. It can safely be removed.
