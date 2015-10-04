@@ -2,3 +2,4 @@
 03_libpng.patch
 04_tools.patch
 #05_ffmpeg_shared.patch
+06_ffmpeg_arm.patch
