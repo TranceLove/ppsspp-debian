@@ -1,7 +1,7 @@
-Index: ppsspp/ffmpeg/linux_arm.sh
+Index: ppsspp-git/ffmpeg/linux_arm.sh
 ===================================================================
---- ppsspp.orig/ffmpeg/linux_arm.sh     2014-08-12 23:17:18.000000000 -0300
-+++ ppsspp/ffmpeg/linux_arm.sh  2015-02-03 03:05:25.107328363 -0200
+--- ppsspp-git.orig/ffmpeg/linux_arm.sh	2015-10-04 17:22:11.740735228 -0300
++++ ppsspp-git/ffmpeg/linux_arm.sh	2015-10-04 17:28:36.730644290 -0300
 @@ -1,13 +1,5 @@
  #!/bin/bash
  
@@ -22,7 +22,7 @@ Index: ppsspp/ffmpeg/linux_arm.sh
      --prefix=./linux/armv7 \
 -    ${GENERAL} \
 -    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=neon -marm -march=armv7-a" \
-+    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=hard -mfpu=neon -marm -march=armv7-a" \ 
++    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=hard -mfpu=neon -marm -march=armv7-a" \
      --disable-shared \
      --enable-static \
      --enable-zlib \
