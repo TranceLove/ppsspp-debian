@@ -4,3 +4,4 @@
 #05_ffmpeg_shared.patch
 06_ffmpeg_arm.patch
 07_version.patch
+08_assets.patch

@@ -1,0 +1,61 @@
+Description: allows Qt frontend to load assets dynamically from the system (provided by ppsspp-common package)
+Index: ppsspp-git2/Qt/desktop_assets.qrc
+===================================================================
+--- ppsspp-git2.orig/Qt/desktop_assets.qrc	2015-10-16 13:05:16.847780532 -0300
++++ ppsspp-git2/Qt/desktop_assets.qrc	2015-10-16 13:08:27.402098233 -0300
+@@ -1,15 +1,5 @@
+ <RCC>
+ 	<qresource prefix="/">
+-		<file alias="assets/ui_atlas_lowmem.zim">../assets/ui_atlas_lowmem.zim</file>
+-		<file alias="assets/ppge_atlas.zim">../assets/ppge_atlas.zim</file>
+-		<file alias="assets/lang">../lang</file>
+-		<file alias="assets/compat.ini">../assets/compat.ini</file>
+-		<file alias="assets/langregion.ini">../assets/langregion.ini</file>
+-		<file alias="assets/unknown.png">../assets/unknown.png</file>
+-		<file alias="assets/rargray.png">../assets/rargray.png</file>
+-		<file alias="assets/zip.png">../assets/zip.png</file>
+-		<file alias="assets/shaders">../assets/shaders</file>
+-		<file alias="assets/flash0/font">../flash0/font</file>
+ 		<file>languages/ppsspp_de.qm</file>
+ 		<file>languages/ppsspp_en.qm</file>
+ 		<file>languages/ppsspp_fr.qm</file>
+Index: ppsspp-git2/ext/native/file/zip_read.cpp
+===================================================================
+--- ppsspp-git2.orig/ext/native/file/zip_read.cpp	2015-10-16 13:05:43.012104599 -0300
++++ ppsspp-git2/ext/native/file/zip_read.cpp	2015-10-16 13:08:21.894032586 -0300
+@@ -67,7 +67,7 @@
+ 
+ #ifdef USING_QT_UI
+ uint8_t *AssetsAssetReader::ReadAsset(const char *path, size_t *size) {
+-	QFile asset(QString(":/assets/") + path);
++	QFile asset(QString("/usr/share/ppsspp/assets/") + path);
+ 	if (!asset.open(QIODevice::ReadOnly))
+ 		return 0;
+ 
+@@ -81,7 +81,7 @@
+ 
+ bool AssetsAssetReader::GetFileListing(const char *path, std::vector<FileInfo> *listing, const char *filter = 0)
+ {
+-	QDir assetDir(QString(":/assets/") + path);
++	QDir assetDir(QString("/usr/share/ppsspp/assets/") + path);
+ 	QStringList filters = QString(filter).split(':', QString::SkipEmptyParts);
+ 	for (int i = 0; i < filters.count(); i++)
+ 		filters[i].prepend("*.");
+@@ -90,7 +90,7 @@
+ 	foreach(QFileInfo qinfo, infoList) {
+ 		FileInfo info;
+ 		info.name = qinfo.fileName().toStdString();
+-		info.fullName = qinfo.absoluteFilePath().remove(":/assets/").toStdString();
++		info.fullName = qinfo.absoluteFilePath().remove("/usr/share/ppsspp/assets/").toStdString();
+ 		info.exists = true;
+ 		info.isWritable = false;
+ 		info.isDirectory = qinfo.isDir();
+@@ -100,7 +100,7 @@
+ }
+ 
+ bool AssetsAssetReader::GetFileInfo(const char *path, FileInfo *info) {
+-	QFileInfo qinfo(QString(":/assets/") + path);
++	QFileInfo qinfo(QString("/usr/share/ppsspp/assets/") + path);
+ 	if (!qinfo.exists()) {
+ 		info->exists = false;
+ 		info->size = 0;
