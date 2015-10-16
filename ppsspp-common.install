@@ -1,5 +1,7 @@
 assets/unix-icons/hicolor/*  usr/share/icons/hicolor
+assets/7z.png                usr/share/ppsspp/assets
 assets/compat.ini            usr/share/ppsspp/assets
+assets/knownfuncs.ini        usr/share/ppsspp/assets
 assets/langregion.ini        usr/share/ppsspp/assets
 assets/ppge_atlas.zim        usr/share/ppsspp/assets
 assets/rargray.png           usr/share/ppsspp/assets

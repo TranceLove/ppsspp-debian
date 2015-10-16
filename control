@@ -44,6 +44,14 @@ Package: ppsspp-common
 Architecture: all
 Depends: ${misc:Depends}
 Description: Common files for PPSSPP
+ PPSSPP can run your PSP games on your PC in full HD resolution. It can even 
+ upscale textures that would otherwise be too blurry as they were made for 
+ the small screen of the original PSP.
+ .
+ All trademarks are property of their respective owners. The emulator is for 
+ educational and development purposes only and it may not be used to play games
+ you do not legally own.
+ .
  This package provides common files for PPSSPP.
 
 Package: ppsspp-qt
