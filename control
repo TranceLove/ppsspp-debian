@@ -43,6 +43,7 @@ Description: Sony PSP emulator
 Package: ppsspp-common
 Architecture: all
 Depends: ${misc:Depends}
+Breaks: ppsspp-common (<< 1.1.1-r93.f4.p3.l1635.a161.t83~37~)
 Description: Common files for PPSSPP
  PPSSPP can run your PSP games on your PC in full HD resolution. It can even 
  upscale textures that would otherwise be too blurry as they were made for 
