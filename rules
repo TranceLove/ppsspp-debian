@@ -16,6 +16,8 @@
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+export DEB_LDFLAGS_MAINT_APPEND=-Wl,--as-needed
+
 export QT_SELECT := qt5
 
 ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
@@ -29,26 +31,13 @@ endif
 	dh $@ --buildsystem=qmake --sourcedirectory="Qt/" --parallel
 
 override_dh_auto_configure:
-	dh_auto_configure -- $(COMPILER) PPSSPPQt.pro
-
-override_dh_auto_build:
-ifeq ($(ARCH),amd64)
-	cd ffmpeg/ && \
-	./linux_x86-64.sh
-else ifeq ($(ARCH),i386)
-	cd ffmpeg/ && \
-	./linux_x86.sh
-else ifeq ($(ARCH),armhf)
-	cd ffmpeg/ && \
-	./linux_arm.sh
-endif
 	mkdir ext/native/tools/build
 	cd ext/native/tools/build && \
 		cmake ../ && \
 		$(MAKE)
 	./buildatlas.sh
 	./build_ppgeatlas.sh
-	dh_auto_build
+	dh_auto_configure -- $(COMPILER) PPSSPPQt.pro
 
 override_dh_auto_install:
 
