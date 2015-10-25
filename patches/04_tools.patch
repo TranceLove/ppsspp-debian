@@ -18,7 +18,7 @@ Index: ppsspp-git/atlasscript.txt
 +++ ppsspp-git/atlasscript.txt	2015-09-21 16:23:12.212560740 -0300
 @@ -1,6 +1,11 @@
  2048
--font UBUNTU24 assets/RobotoCondensed-Regular.ttf UWER 34 -2
+-font UBUNTU24 assets/Roboto-Condensed.ttf UWER 34 -2
 -font UBUNTU24 C:/Windows/Fonts/ARIALUNI.ttf UWEhkcRGHKVTe 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/roboto/RobotoCondensed-Regular.ttf UWER 34 -2
 +font UBUNTU24 /usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf UWERG 30 0
@@ -36,7 +36,7 @@ Index: ppsspp-git/atlasscript_lowmem.txt
 +++ ppsspp-git/atlasscript_lowmem.txt	2015-09-21 16:23:12.212560740 -0300
 @@ -1,5 +1,5 @@
  512
--font UBUNTU24 assets/RobotoCondensed-Regular.ttf U 34 -2
+-font UBUNTU24 assets/Roboto-Condensed.ttf U 34 -2
 +font UBUNTU24 /usr/share/fonts/truetype/roboto/RobotoCondensed-Regular.ttf U 34 -2
  image I_SOLIDWHITE white.png copy
  image I_CROSS source_assets/image/cross.png copy
