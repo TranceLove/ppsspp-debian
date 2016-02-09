@@ -20,12 +20,12 @@ Index: ppsspp-git/atlasscript.txt
  2048
 -font UBUNTU24 assets/Roboto-Condensed.ttf UWER 34 -2
 -font UBUNTU24 C:/Windows/Fonts/ARIALUNI.ttf UWEhkcRGHKVTe 30 0
-+font UBUNTU24 /usr/share/fonts/truetype/roboto/RobotoCondensed-Regular.ttf UWER 34 -2
++font UBUNTU24 debian/fonts/RobotoCondensed-Regular.ttf UWER 34 -2
 +font UBUNTU24 /usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf UWERG 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf e 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/droid/DroidSansJapanese.ttf hkc 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/droid/DroidSansHebrew-Regular.ttf H 30 0
-+font UBUNTU24 assets/NotoSansThai-Regular.ttf T 30 0
++font UBUNTU24 debian/fonts/NotoSansThai-Regular.ttf T 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/unfonts-core/UnDotum.ttf K 30 0
  image I_SOLIDWHITE white.png copy
  image I_CROSS source_assets/image/cross.png copy
@@ -37,7 +37,7 @@ Index: ppsspp-git/atlasscript_lowmem.txt
 @@ -1,5 +1,5 @@
  512
 -font UBUNTU24 assets/Roboto-Condensed.ttf U 34 -2
-+font UBUNTU24 /usr/share/fonts/truetype/roboto/RobotoCondensed-Regular.ttf U 34 -2
++font UBUNTU24 debian/fonts/RobotoCondensed-Regular.ttf U 34 -2
  image I_SOLIDWHITE white.png copy
  image I_CROSS source_assets/image/cross.png copy
  image I_CIRCLE source_assets/image/circle.png copy
