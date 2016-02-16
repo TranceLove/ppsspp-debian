@@ -3,7 +3,7 @@ Index: ppsspp/CMakeLists.txt
 ===================================================================
 --- ppsspp.orig/CMakeLists.txt
 +++ ppsspp/CMakeLists.txt
-@@ -700,43 +700,43 @@ else()
+@@ -709,43 +709,43 @@ else()
  	set(LIBZIP_LIBRARY libzip)
  endif()
  
