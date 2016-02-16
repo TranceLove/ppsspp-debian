@@ -21,7 +21,7 @@ Index: ppsspp/Core/HLE/sceAtrac.cpp
 ===================================================================
 --- ppsspp.orig/Core/HLE/sceAtrac.cpp
 +++ ppsspp/Core/HLE/sceAtrac.cpp
-@@ -91,9 +91,9 @@ static const int atracDecodeDelay = 2300
+@@ -119,9 +119,9 @@ static const int atracDecodeDelay = 2300
  #ifdef USE_FFMPEG
  
  extern "C" {
