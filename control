@@ -45,6 +45,22 @@ Description: Sony PSP emulator
  educational and development purposes only and it may not be used to play games
  you do not legally own.
 
+Package: ppsspp-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ppsspp (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Sony PSP emulator debug symbols
+ PPSSPP can run your PSP games on your PC in full HD resolution. It can even
+ upscale textures that would otherwise be too blurry as they were made for
+ the small screen of the original PSP.
+ .
+ This package provides the debug files for the PPSSPP.
+ .
+ All trademarks are property of their respective owners. The emulator is for
+ educational and development purposes only and it may not be used to play games
+ you do not legally own.
+
 Package: ppsspp-common
 Architecture: all
 Depends: ${misc:Depends}
