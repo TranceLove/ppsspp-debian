@@ -4,3 +4,4 @@
 05_ffmpeg_shared.patch
 07_version.patch
 08_assets.patch
+09_freetype2.patch

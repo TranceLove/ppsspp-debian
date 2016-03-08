@@ -1,0 +1,13 @@
+Index: ppsspp-git/ext/native/tools/atlastool.cpp
+===================================================================
+--- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2016-03-07 22:01:55.459845590 -0300
++++ ppsspp-git/ext/native/tools/atlastool.cpp	2016-03-07 22:05:03.778651858 -0300
+@@ -18,7 +18,7 @@
+ // Hackery for our broken path structure
+ #include <ftbitmap.h>
+ #else
+-#include <freetype2/ftbitmap.h>
++#include <freetype2/freetype/ftbitmap.h>
+ #endif
+ #include <set>
+ #include <map>
