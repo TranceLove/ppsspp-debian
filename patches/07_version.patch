@@ -3,9 +3,9 @@ Index: ppsspp-git/Qt/Settings.pri
 --- ppsspp-git.orig/Qt/Settings.pri	2015-10-04 12:46:16.070640093 -0300
 +++ ppsspp-git/Qt/Settings.pri	2015-10-04 18:36:17.306779600 -0300
 @@ -1,4 +1,4 @@
--VERSION = 1.2.1.0
-+VERSION = 1.2.1
- DEFINES += USING_QT_UI USE_FFMPEG
+-VERSION = 1.2.2.0
++VERSION = 1.2.2
+ DEFINES += USING_QT_UI USE_FFMPEG NO_VULKAN
  
  exists( /usr/include/snappy-c.h ) {
 Index: ppsspp-git/git-version.cmake
@@ -15,7 +15,7 @@ Index: ppsspp-git/git-version.cmake
 @@ -1,5 +1,5 @@
  set(GIT_VERSION_FILE "${SOURCE_DIR}/git-version.cpp")
 -set(GIT_VERSION "unknown")
-+set(GIT_VERSION "1.2.1")
++set(GIT_VERSION "1.2.2")
  set(GIT_VERSION_UPDATE "1")
  
  find_package(Git)

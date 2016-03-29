@@ -23,7 +23,7 @@ Index: ppsspp-git2/ext/native/file/zip_read.cpp
 ===================================================================
 --- ppsspp-git2.orig/ext/native/file/zip_read.cpp	2015-10-16 13:05:43.012104599 -0300
 +++ ppsspp-git2/ext/native/file/zip_read.cpp	2015-10-16 13:08:21.894032586 -0300
-@@ -67,7 +67,7 @@
+@@ -68,7 +68,7 @@
  
  #ifdef USING_QT_UI
  uint8_t *AssetsAssetReader::ReadAsset(const char *path, size_t *size) {
@@ -32,7 +32,7 @@ Index: ppsspp-git2/ext/native/file/zip_read.cpp
  	if (!asset.open(QIODevice::ReadOnly))
  		return 0;
  
-@@ -81,7 +81,7 @@
+@@ -82,7 +82,7 @@
  
  bool AssetsAssetReader::GetFileListing(const char *path, std::vector<FileInfo> *listing, const char *filter = 0)
  {
@@ -41,7 +41,7 @@ Index: ppsspp-git2/ext/native/file/zip_read.cpp
  	QStringList filters = QString(filter).split(':', QString::SkipEmptyParts);
  	for (int i = 0; i < filters.count(); i++)
  		filters[i].prepend("*.");
-@@ -90,7 +90,7 @@
+@@ -91,7 +91,7 @@
  	foreach(QFileInfo qinfo, infoList) {
  		FileInfo info;
  		info.name = qinfo.fileName().toStdString();
@@ -50,7 +50,7 @@ Index: ppsspp-git2/ext/native/file/zip_read.cpp
  		info.exists = true;
  		info.isWritable = false;
  		info.isDirectory = qinfo.isDir();
-@@ -100,7 +100,7 @@
+@@ -101,7 +101,7 @@
  }
  
  bool AssetsAssetReader::GetFileInfo(const char *path, FileInfo *info) {
