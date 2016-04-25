@@ -1,3 +1,4 @@
+Description: freetype2 path changed on Debian.
 Index: ppsspp-git/ext/native/tools/atlastool.cpp
 ===================================================================
 --- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2016-03-07 22:01:55.459845590 -0300
