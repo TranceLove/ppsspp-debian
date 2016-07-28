@@ -1,9 +1,9 @@
 Description: shared FFmpeg
-Index: ppsspp/Qt/Settings.pri
+Index: ppsspp-git/Qt/Settings.pri
 ===================================================================
---- ppsspp.orig/Qt/Settings.pri
-+++ ppsspp/Qt/Settings.pri
-@@ -32,12 +32,10 @@ include(Platform/ArchDetection.pri)
+--- ppsspp-git.orig/Qt/Settings.pri	2016-07-28 12:36:43.923705054 -0300
++++ ppsspp-git/Qt/Settings.pri	2016-07-28 12:36:43.915704943 -0300
+@@ -32,12 +32,10 @@
  # Work out platform name
  include(Platform/OSDetection.pri)
  # OS dependent paths
@@ -17,11 +17,11 @@ Index: ppsspp/Qt/Settings.pri
  	equals(PLATFORM_NAME, "linux"):arm|android: LIBS += -lEGL
  }
  
-Index: ppsspp/Core/HLE/sceAtrac.cpp
+Index: ppsspp-git/Core/HLE/sceAtrac.cpp
 ===================================================================
---- ppsspp.orig/Core/HLE/sceAtrac.cpp
-+++ ppsspp/Core/HLE/sceAtrac.cpp
-@@ -119,9 +119,9 @@ static const int atracDecodeDelay = 2300
+--- ppsspp-git.orig/Core/HLE/sceAtrac.cpp	2016-07-28 12:36:43.923705054 -0300
++++ ppsspp-git/Core/HLE/sceAtrac.cpp	2016-07-28 12:36:43.915704943 -0300
+@@ -119,9 +119,9 @@
  #ifdef USE_FFMPEG
  
  extern "C" {
@@ -34,42 +34,46 @@ Index: ppsspp/Core/HLE/sceAtrac.cpp
  }
  
  #endif // USE_FFMPEG
-Index: ppsspp/Core/HLE/sceMpeg.cpp
+Index: ppsspp-git/Core/HLE/sceMpeg.cpp
 ===================================================================
---- ppsspp.orig/Core/HLE/sceMpeg.cpp
-+++ ppsspp/Core/HLE/sceMpeg.cpp
-@@ -97,8 +97,8 @@ static bool pmp_oldStateLoaded = false;
+--- ppsspp-git.orig/Core/HLE/sceMpeg.cpp	2016-07-28 12:36:43.923705054 -0300
++++ ppsspp-git/Core/HLE/sceMpeg.cpp	2016-07-28 12:36:43.915704943 -0300
+@@ -98,9 +98,9 @@
  #ifdef USE_FFMPEG 
  
  extern "C" {
 -#include "libavformat/avformat.h"
+-#include "libavutil/imgutils.h"
 -#include "libswscale/swscale.h"
 +#include <libavformat/avformat.h>
++#include <libavutil/imgutils.h>
 +#include <libswscale/swscale.h>
  }
  static AVPixelFormat pmp_want_pix_fmt;
  
-Index: ppsspp/Core/HW/MediaEngine.cpp
+Index: ppsspp-git/Core/HW/MediaEngine.cpp
 ===================================================================
---- ppsspp.orig/Core/HW/MediaEngine.cpp
-+++ ppsspp/Core/HW/MediaEngine.cpp
-@@ -32,9 +32,9 @@
+--- ppsspp-git.orig/Core/HW/MediaEngine.cpp	2016-07-28 12:36:43.923705054 -0300
++++ ppsspp-git/Core/HW/MediaEngine.cpp	2016-07-28 12:36:43.915704943 -0300
+@@ -32,10 +32,10 @@
  
  extern "C" {
  
 -#include "libavcodec/avcodec.h"
 -#include "libavformat/avformat.h"
+-#include "libavutil/imgutils.h"
 -#include "libswscale/swscale.h"
 +#include <libavcodec/avcodec.h>
 +#include <libavformat/avformat.h>
++#include <libavutil/imgutils.h>
 +#include <libswscale/swscale.h>
  
  }
  #endif // USE_FFMPEG
-Index: ppsspp/Core/HW/SimpleAudioDec.cpp
+Index: ppsspp-git/Core/HW/SimpleAudioDec.cpp
 ===================================================================
---- ppsspp.orig/Core/HW/SimpleAudioDec.cpp
-+++ ppsspp/Core/HW/SimpleAudioDec.cpp
+--- ppsspp-git.orig/Core/HW/SimpleAudioDec.cpp	2016-07-28 12:36:43.923705054 -0300
++++ ppsspp-git/Core/HW/SimpleAudioDec.cpp	2016-07-28 12:36:43.915704943 -0300
 @@ -26,9 +26,9 @@
  #ifdef USE_FFMPEG
  

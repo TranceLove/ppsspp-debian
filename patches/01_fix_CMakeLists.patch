@@ -1,9 +1,9 @@
 Description: change libpng17 to libpng
 Index: ppsspp-git/CMakeLists.txt
 ===================================================================
---- ppsspp-git.orig/CMakeLists.txt	2016-04-24 22:24:30.769263205 -0300
-+++ ppsspp-git/CMakeLists.txt	2016-04-24 22:24:30.769263205 -0300
-@@ -712,43 +712,43 @@
+--- ppsspp-git.orig/CMakeLists.txt	2016-07-28 12:25:44.990826898 -0300
++++ ppsspp-git/CMakeLists.txt	2016-07-28 12:25:44.986826844 -0300
+@@ -725,43 +725,43 @@
  	set(LIBZIP_LIBRARY libzip)
  endif()
  
