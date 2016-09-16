@@ -1,8 +1,8 @@
 Description: fix some atlas tools stuff, make it use fonts from the system. DroidSansThai.ttf maybe is better than NotoSansThai-Regular.ttf, but it's not in the repository anymore.
 Index: ppsspp-git/ext/native/tools/atlastool.cpp
 ===================================================================
---- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/ext/native/tools/atlastool.cpp	2015-09-21 16:23:12.212560740 -0300
+--- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/ext/native/tools/atlastool.cpp	2016-09-15 22:50:50.430039623 -0300
 @@ -11,7 +11,7 @@
  // line height
  // dist-per-pixel
@@ -14,24 +14,26 @@ Index: ppsspp-git/ext/native/tools/atlastool.cpp
  #ifdef _WIN32
 Index: ppsspp-git/atlasscript.txt
 ===================================================================
---- ppsspp-git.orig/atlasscript.txt	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/atlasscript.txt	2015-09-21 16:23:12.212560740 -0300
-@@ -1,6 +1,9 @@
+--- ppsspp-git.orig/atlasscript.txt	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/atlasscript.txt	2016-09-15 22:51:31.538794174 -0300
+@@ -1,6 +1,11 @@
  2048
 -font UBUNTU24 assets/Roboto-Condensed.ttf UWER 34 -2
 -font UBUNTU24 C:/Windows/Fonts/ARIALUNI.ttf UWEhkcRGHKVTe 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Regular.ttf UWER 34 -2
 +font UBUNTU24 /usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf UWERG 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf e 30 0
-+font UBUNTU24 /usr/share/fonts-droid-fallback/truetype/DroidSansFallback.ttf hkcHT 30 0
++font UBUNTU24 /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf hkc 30 0
++font UBUNTU24 /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf H 30 0
++font UBUNTU24 /usr/share/fonts/truetype/noto/NotoSansThai-Regular.ttf T 30 0
 +font UBUNTU24 /usr/share/fonts/truetype/unfonts-core/UnDotum.ttf K 30 0
  image I_SOLIDWHITE white.png copy
  image I_CROSS source_assets/image/cross.png copy
  image I_CIRCLE source_assets/image/circle.png copy
 Index: ppsspp-git/atlasscript_lowmem.txt
 ===================================================================
---- ppsspp-git.orig/atlasscript_lowmem.txt	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/atlasscript_lowmem.txt	2015-09-21 16:23:12.212560740 -0300
+--- ppsspp-git.orig/atlasscript_lowmem.txt	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/atlasscript_lowmem.txt	2016-09-15 22:52:11.359518131 -0300
 @@ -1,5 +1,5 @@
  512
 -font UBUNTU24 assets/Roboto-Condensed.ttf U 34 -2
@@ -41,30 +43,31 @@ Index: ppsspp-git/atlasscript_lowmem.txt
  image I_CIRCLE source_assets/image/circle.png copy
 Index: ppsspp-git/build_ppgeatlas.sh
 ===================================================================
---- ppsspp-git.orig/build_ppgeatlas.sh	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/build_ppgeatlas.sh	2015-09-21 16:23:12.212560740 -0300
+--- ppsspp-git.orig/build_ppgeatlas.sh	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/build_ppgeatlas.sh	2016-09-15 22:50:50.434039697 -0300
 @@ -1 +1 @@
 -./atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && cp ppge_atlas.zim assets && mv ppge_atlas.zim android/assets
 +./ext/native/tools/build/atlastool ppge_atlasscript.txt ppge && mv ppge_atlas.cpp ppge_atlas.h Core/Util && mv ppge_atlas.zim assets
 Index: ppsspp-git/ppge_atlasscript.txt
 ===================================================================
---- ppsspp-git.orig/ppge_atlasscript.txt	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/ppge_atlasscript.txt	2015-09-21 16:23:12.212560740 -0300
-@@ -1,6 +1,8 @@
+--- ppsspp-git.orig/ppge_atlasscript.txt	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/ppge_atlasscript.txt	2016-09-15 22:52:50.420221752 -0300
+@@ -1,6 +1,9 @@
  2048
 -font UBUNTU24 C:/Windows/Fonts/KozGoPro-Medium.otf UWkhcsGR 24
 -font UBUNTU24 C:/Windows/Fonts/ARIALUNI.ttf UWEhkcRGHKVTe 24 0
-+font UBUNTU24 /usr/share/fonts-droid-fallback/truetype/DroidSansFallback.ttf UWhkcR 24
++font UBUNTU24 /usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Regular.ttf UWR 28
 +font UBUNTU24 /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf G 24
 +font UBUNTU24 /usr/share/fonts/truetype/nanum/NanumGothic.ttf K 24
++font UBUNTU24 /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf hkc 24
 +font UBUNTU24 /usr/share/fonts/truetype/mona/mona.ttf s 24
  image I_CROSS source_assets/image/cross.png copy
  image I_CIRCLE source_assets/image/circle.png copy
  image I_SQUARE source_assets/image/square.png copy
 Index: ppsspp-git/buildatlas.sh
 ===================================================================
---- ppsspp-git.orig/buildatlas.sh	2015-09-21 16:23:12.212560740 -0300
-+++ ppsspp-git/buildatlas.sh	2015-09-21 16:23:12.212560740 -0300
+--- ppsspp-git.orig/buildatlas.sh	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/buildatlas.sh	2016-09-15 22:50:50.434039697 -0300
 @@ -1,4 +1,4 @@
 -./ext/native/tools/build/atlastool atlasscript.txt ui 8888 && cp ui_atlas.zim assets && cp ui_atlas.zim android/assets && cp ui_atlas.zim.png ui_atlas_high.zim.png && mv ui_atlas.cpp ui_atlas_highmem.cpp && mv ui_atlas.h UI
 +./ext/native/tools/build/atlastool atlasscript.txt ui 8888 && cp ui_atlas.zim assets && cp ui_atlas.zim.png ui_atlas_high.zim.png && mv ui_atlas.cpp ui_atlas_highmem.cpp && mv ui_atlas.h UI
@@ -74,8 +77,8 @@ Index: ppsspp-git/buildatlas.sh
 +rm -f ui_atlas_highmem.cpp ui_atlas_lowmem.cpp ui_atlas.h
 Index: ppsspp-git/ext/native/tools/CMakeLists.txt
 ===================================================================
---- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2015-09-21 16:20:29.777890333 -0300
-+++ ppsspp-git/ext/native/tools/CMakeLists.txt	2015-09-21 16:24:04.985348717 -0300
+--- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2016-09-15 22:50:50.438039771 -0300
++++ ppsspp-git/ext/native/tools/CMakeLists.txt	2016-09-15 22:50:50.434039697 -0300
 @@ -45,11 +45,11 @@
  add_subdirectory(../math math)
  add_subdirectory(../util util)
