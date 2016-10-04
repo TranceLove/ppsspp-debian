@@ -1,0 +1,14 @@
+Description: Try fix ARM64 build
+Index: ppsspp-git/ext/native/tools/CMakeLists.txt
+===================================================================
+--- ppsspp-git.orig/ext/native/tools/CMakeLists.txt	2016-10-03 22:27:05.544762323 -0300
++++ ppsspp-git/ext/native/tools/CMakeLists.txt	2016-10-03 22:27:17.948935833 -0300
+@@ -21,6 +21,8 @@
+ 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ endif()
+ 
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPNG_ARM_NEON_OPT=0")
++
+ # add_definitions(-fstrict-aliasing)
+ 
+ include_directories(..)
