@@ -12,4 +12,4 @@ assets/unknown.png           usr/share/ppsspp/assets
 assets/zip.png               usr/share/ppsspp/assets
 assets/lang/*                usr/share/ppsspp/assets/lang
 assets/shaders/*             usr/share/ppsspp/assets/shaders
-flash0/*                     usr/share/ppsspp/assets/flash0
+assets/flash0/*              usr/share/ppsspp/assets/flash0
