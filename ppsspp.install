@@ -1,2 +1,2 @@
-Qt/ppsspp usr/games
+obj/PPSSPPQt usr/games
 debian/ppsspp.desktop usr/share/applications

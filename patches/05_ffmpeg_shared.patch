@@ -1,26 +1,6 @@
 Description: shared FFmpeg
-Index: ppsspp-git/Qt/Settings.pri
-===================================================================
---- ppsspp-git.orig/Qt/Settings.pri	2016-07-28 12:36:43.923705054 -0300
-+++ ppsspp-git/Qt/Settings.pri	2016-07-28 12:36:43.915704943 -0300
-@@ -32,12 +32,10 @@
- # Work out platform name
- include(Platform/OSDetection.pri)
- # OS dependent paths
--!system_ffmpeg: INCLUDEPATH += $$P/ffmpeg/$${PLATFORM_NAME}/$${PLATFORM_ARCH}/include
- 
- !contains(CONFIG, staticlib) {
- 	QMAKE_LIBDIR += $$CONFIG_DIR
--	!system_ffmpeg: QMAKE_LIBDIR += $$P/ffmpeg/$${PLATFORM_NAME}/$${PLATFORM_ARCH}/lib/
--	contains(DEFINES, USE_FFMPEG): LIBS+=  -lavformat -lavcodec -lavutil -lswresample -lswscale
-+	contains(DEFINES, USE_FFMPEG): LIBS+=  -lavformat-ffmpeg -lavcodec-ffmpeg -lavutil-ffmpeg -lswresample-ffmpeg -lswscale-ffmpeg
- 	equals(PLATFORM_NAME, "linux"):arm|android: LIBS += -lEGL
- }
- 
-Index: ppsspp-git/Core/HLE/sceAtrac.cpp
-===================================================================
---- ppsspp-git.orig/Core/HLE/sceAtrac.cpp	2016-07-28 12:36:43.923705054 -0300
-+++ ppsspp-git/Core/HLE/sceAtrac.cpp	2016-07-28 12:36:43.915704943 -0300
+--- a/Core/HLE/sceAtrac.cpp
++++ b/Core/HLE/sceAtrac.cpp
 @@ -119,9 +119,9 @@
  #ifdef USE_FFMPEG
  
@@ -34,11 +14,9 @@ Index: ppsspp-git/Core/HLE/sceAtrac.cpp
  }
  
  #endif // USE_FFMPEG
-Index: ppsspp-git/Core/HLE/sceMpeg.cpp
-===================================================================
---- ppsspp-git.orig/Core/HLE/sceMpeg.cpp	2016-07-28 12:36:43.923705054 -0300
-+++ ppsspp-git/Core/HLE/sceMpeg.cpp	2016-07-28 12:36:43.915704943 -0300
-@@ -98,9 +98,9 @@
+--- a/Core/HLE/sceMpeg.cpp
++++ b/Core/HLE/sceMpeg.cpp
+@@ -99,9 +99,9 @@
  #ifdef USE_FFMPEG 
  
  extern "C" {
@@ -51,10 +29,8 @@ Index: ppsspp-git/Core/HLE/sceMpeg.cpp
  }
  static AVPixelFormat pmp_want_pix_fmt;
  
-Index: ppsspp-git/Core/HW/MediaEngine.cpp
-===================================================================
---- ppsspp-git.orig/Core/HW/MediaEngine.cpp	2016-07-28 12:36:43.923705054 -0300
-+++ ppsspp-git/Core/HW/MediaEngine.cpp	2016-07-28 12:36:43.915704943 -0300
+--- a/Core/HW/MediaEngine.cpp
++++ b/Core/HW/MediaEngine.cpp
 @@ -32,10 +32,10 @@
  
  extern "C" {
@@ -70,10 +46,8 @@ Index: ppsspp-git/Core/HW/MediaEngine.cpp
  
  }
  #endif // USE_FFMPEG
-Index: ppsspp-git/Core/HW/SimpleAudioDec.cpp
-===================================================================
---- ppsspp-git.orig/Core/HW/SimpleAudioDec.cpp	2016-07-28 12:36:43.923705054 -0300
-+++ ppsspp-git/Core/HW/SimpleAudioDec.cpp	2016-07-28 12:36:43.915704943 -0300
+--- a/Core/HW/SimpleAudioDec.cpp
++++ b/Core/HW/SimpleAudioDec.cpp
 @@ -26,9 +26,9 @@
  #ifdef USE_FFMPEG
  

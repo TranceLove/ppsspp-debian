@@ -1,14 +1,11 @@
-Description: allows Qt frontend to load assets dynamically from the system (provided by ppsspp-common package)
-Index: ppsspp-git2/Qt/desktop_assets.qrc
-===================================================================
---- ppsspp-git2.orig/Qt/desktop_assets.qrc	2015-10-16 13:05:16.847780532 -0300
-+++ ppsspp-git2/Qt/desktop_assets.qrc	2015-10-16 13:08:27.402098233 -0300
+--- a/Qt/desktop_assets.qrc
++++ b/Qt/desktop_assets.qrc
 @@ -1,15 +1,5 @@
  <RCC>
  	<qresource prefix="/">
--		<file alias="assets/ui_atlas_lowmem.zim">../assets/ui_atlas_lowmem.zim</file>
+-		<file alias="assets/ui_atlas.zim">../assets/ui_atlas.zim</file>
 -		<file alias="assets/ppge_atlas.zim">../assets/ppge_atlas.zim</file>
--		<file alias="assets/lang">../lang</file>
+-		<file alias="assets/lang">../assets/lang</file>
 -		<file alias="assets/compat.ini">../assets/compat.ini</file>
 -		<file alias="assets/langregion.ini">../assets/langregion.ini</file>
 -		<file alias="assets/unknown.png">../assets/unknown.png</file>
@@ -16,13 +13,11 @@ Index: ppsspp-git2/Qt/desktop_assets.qrc
 -		<file alias="assets/zip.png">../assets/zip.png</file>
 -		<file alias="assets/shaders">../assets/shaders</file>
 -		<file alias="assets/flash0/font">../flash0/font</file>
- 		<file>languages/ppsspp_de.qm</file>
- 		<file>languages/ppsspp_en.qm</file>
- 		<file>languages/ppsspp_fr.qm</file>
-Index: ppsspp-git2/ext/native/file/zip_read.cpp
-===================================================================
---- ppsspp-git2.orig/ext/native/file/zip_read.cpp	2015-10-16 13:05:43.012104599 -0300
-+++ ppsspp-git2/ext/native/file/zip_read.cpp	2015-10-16 13:08:21.894032586 -0300
+ 		<file>resources/breakpointDisable.ico</file>
+ 		<file>resources/breakpoint.ico</file>
+ 	</qresource>
+--- a/ext/native/file/zip_read.cpp
++++ b/ext/native/file/zip_read.cpp
 @@ -68,7 +68,7 @@
  
  #ifdef USING_QT_UI

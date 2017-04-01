@@ -1,8 +1,8 @@
 01_fix_CMakeLists.patch
 03_libpng.patch
-04_tools.patch
+#04_tools.patch
 05_ffmpeg_shared.patch
 07_version.patch
 08_assets.patch
 09_freetype2.patch
-10_fix_ARM64.patch
+#10_fix_ARM64.patch

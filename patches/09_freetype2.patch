@@ -1,14 +1,11 @@
-Description: freetype2 path changed on Debian.
-Index: ppsspp-git/ext/native/tools/atlastool.cpp
-===================================================================
---- ppsspp-git.orig/ext/native/tools/atlastool.cpp	2016-03-07 22:01:55.459845590 -0300
-+++ ppsspp-git/ext/native/tools/atlastool.cpp	2016-03-07 22:05:03.778651858 -0300
-@@ -18,7 +18,7 @@
- // Hackery for our broken path structure
- #include <ftbitmap.h>
- #else
--#include <freetype2/ftbitmap.h>
+--- a/ext/native/tools/atlastool.cpp
++++ b/ext/native/tools/atlastool.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include <libpng17/png.h>
+ #include <ft2build.h>
+-#include <freetype/ftbitmap.h>
 +#include <freetype2/freetype/ftbitmap.h>
- #endif
  #include <set>
  #include <map>
+ #include <vector>
