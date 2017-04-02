@@ -21,9 +21,6 @@ override_dh_auto_configure:
 #		$(MAKE)
 #	./buildatlas.sh
 #	./build_ppgeatlas.sh
-	dh_auto_configure -- $(COMPILER) -DUSING_QT_UI=ON
-
-override_dh_auto_build:
 ifeq ($(ARCH),amd64)
 	cd ffmpeg/ && \
 	./linux_x86-64.sh
@@ -34,7 +31,7 @@ else ifeq ($(ARCH),armhf)
 	cd ffmpeg/ && \
 	./linux_arm.sh
 endif
-	dh_auto_build
+	dh_auto_configure -- $(COMPILER) -DUSING_QT_UI=ON
 
 override_dh_auto_install:
 

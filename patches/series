@@ -6,4 +6,3 @@
 08_assets.patch
 09_freetype2.patch
 #10_fix_ARM64.patch
-20_fix_ffmpeg.patch
