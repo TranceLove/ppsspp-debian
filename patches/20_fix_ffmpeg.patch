@@ -1,0 +1,13 @@
+Index: ppsspp-git3/cmake/Modules/FindFFmpeg.cmake
+===================================================================
+--- ppsspp-git3.orig/cmake/Modules/FindFFmpeg.cmake	2017-03-31 13:56:58.889299339 -0300
++++ ppsspp-git3/cmake/Modules/FindFFmpeg.cmake	2017-04-01 21:02:08.002661960 -0300
+@@ -144,7 +144,7 @@
+   endif()
+ endforeach()
+ 
+-list(REMOVE_DUPLICATES FFmpeg_INCLUDES)
++#list(REMOVE_DUPLICATES FFmpeg_INCLUDES)
+ 
+ foreach(c ${FFmpeg_FIND_COMPONENTS})
+   list(APPEND _FFmpeg_REQUIRED_VARS FFmpeg_INCLUDE_${c} FFmpeg_LIBRARY_${c})
