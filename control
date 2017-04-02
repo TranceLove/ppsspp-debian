@@ -14,7 +14,8 @@ Build-Depends: debhelper (>= 9),
                qt5-qmake,
                qtbase5-dev,
                qttools5-dev-tools,
-               zlib1g-dev
+               zlib1g-dev,
+               chrpath
 Standards-Version: 3.9.8
 Homepage: http://www.ppsspp.org
 
