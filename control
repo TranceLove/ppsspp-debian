@@ -48,6 +48,37 @@ Description: Sony PSP emulator debug symbols
  educational and development purposes only and it may not be used to play games
  you do not legally own.
 
+Package: ppsspp-sdl
+Architecture: any
+Depends: ppsspp-common (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Sony PSP emulator - SDL version
+ PPSSPP can run your PSP games on your PC in full HD resolution. It can even 
+ upscale textures that would otherwise be too blurry as they were made for 
+ the small screen of the original PSP.
+ .
+ All trademarks are property of their respective owners. The emulator is for 
+ educational and development purposes only and it may not be used to play games
+ you do not legally own.
+ .
+ This package provides the SDL port which relies in less dependencies,
+ such as Qt libraries.
+
+Package: ppsspp-sdl-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ppsspp-sdl (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Sony PSP emulator - SDL version debug symbols
+ PPSSPP can run your PSP games on your PC in full HD resolution. It can even 
+ upscale textures that would otherwise be too blurry as they were made for 
+ the small screen of the original PSP.
+ .
+ This package provides the debug symbols of the SDL port.
+ .
+ All trademarks are property of their respective owners. The emulator is for 
+ educational and development purposes only and it may not be used to play games
+ you do not legally own.
+
 Package: ppsspp-common
 Architecture: all
 Depends: ${misc:Depends}

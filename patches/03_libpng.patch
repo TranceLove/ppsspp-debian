@@ -21,3 +21,14 @@ Description: shared libpng
  #endif
  
  #include "png_load.h"
+--- a/Core/TextureReplacer.cpp
++++ b/Core/TextureReplacer.cpp
+@@ -16,7 +16,7 @@
+ // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
+ 
+ #ifndef USING_QT_UI
+-#include <libpng17/png.h>
++#include <libpng/png.h>
+ #endif
+ 
+ #include <algorithm>

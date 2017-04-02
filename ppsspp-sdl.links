@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "usr/games/PPSSPPSDL usr/games/ppsspp-sdl"

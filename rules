@@ -33,6 +33,15 @@ else ifeq ($(ARCH),armhf)
 endif
 	dh_auto_configure -- $(COMPILER) -DUSING_QT_UI=ON
 
+override_dh_auto_build:
+	dh_auto_build
+	mv obj/PPSSPPQt ./
+	dh_auto_clean
+	dh_auto_configure -- $(COMPILER)
+	dh_auto_build
+	chrpath -d obj/PPSSPPSDL
+	mv PPSSPPQt obj/
+
 override_dh_auto_install:
 
 override_dh_auto_clean:
@@ -41,3 +50,4 @@ override_dh_auto_clean:
 
 override_dh_strip:
 	dh_strip -pppsspp --dbg-package=ppsspp-dbg
+	dh_strip -pppsspp-sdl --dbg-package=ppsspp-sdl-dbg
