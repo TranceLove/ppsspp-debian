@@ -8,7 +8,8 @@ ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
 # See issue #7817
 ifeq ($(ARCH),armhf)
-	COMPILER=QMAKE_CC=clang QMAKE_CXX=clang++
+	export CC=clang
+	export CXX=clang++
 endif
 
 %:
