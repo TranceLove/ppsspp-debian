@@ -30,6 +30,9 @@ else ifeq ($(ARCH),i386)
 else ifeq ($(ARCH),armhf)
 	cd ffmpeg/ && \
 	./linux_arm.sh
+else ifeq ($(ARCH),arm64)
+	cd ffmpeg/ && \
+	./linux_arm64.sh
 endif
 	dh_auto_configure -- $(COMPILER) -DUSING_QT_UI=ON
 
