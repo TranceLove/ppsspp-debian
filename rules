@@ -6,8 +6,9 @@ export QT_SELECT := qt5
 
 ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-# See issue #7817
 ifeq ($(ARCH),armhf)
+	GLES_ENABLE=-DUSING_GLES2=ON
+	# See issue #7817
 	export CC=clang
 	export CXX=clang++
 endif
