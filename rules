@@ -6,11 +6,13 @@ export QT_SELECT := qt5
 
 ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-ifneq (,$(filter $(ARCH), armhf arm64))
-	GLES_ENABLE=-DUSING_GLES2=ON
+ifneq (,$(filter $(ARCH), armhf))
+	GLES_ENABLE=-DUSING_GLES2=ON -DUSING_EGL=ON
 	# See issue #7817
 	export CC=clang
 	export CXX=clang++
+else ifneq (,$(filter $(ARCH), arm64))
+	GLES_ENABLE=-DUSING_GLES2=ON -DUSING_EGL=ON
 endif
 
 %:
