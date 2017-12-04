@@ -1,11 +1,11 @@
-Index: ppsspp-git/git-version.cmake
+Index: ppsspp-git2/git-version.cmake
 ===================================================================
---- ppsspp-git.orig/git-version.cmake	2016-09-18 18:06:42.666043475 -0300
-+++ ppsspp-git/git-version.cmake	2016-09-18 18:06:42.662043414 -0300
+--- ppsspp-git2.orig/git-version.cmake
++++ ppsspp-git2/git-version.cmake
 @@ -1,5 +1,5 @@
  set(GIT_VERSION_FILE "${SOURCE_DIR}/git-version.cpp")
 -set(GIT_VERSION "unknown")
-+set(GIT_VERSION "v1.5.2")
++set(GIT_VERSION "v1.5.3")
  set(GIT_VERSION_UPDATE "1")
  
  find_package(Git)
