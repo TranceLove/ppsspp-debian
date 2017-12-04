@@ -6,7 +6,7 @@ export QT_SELECT := qt5
 
 ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-ifeq ($(ARCH),armhf)
+ifneq (,$(filter $(ARCH), armhf arm64))
 	GLES_ENABLE=-DUSING_GLES2=ON
 	# See issue #7817
 	export CC=clang
@@ -36,13 +36,13 @@ else ifeq ($(ARCH),arm64)
 	cd ffmpeg/ && \
 	./linux_arm64.sh
 endif
-	dh_auto_configure -- $(COMPILER) -DUSING_QT_UI=ON
+	dh_auto_configure -- $(GLES_ENABLE) -DUSING_QT_UI=ON
 
 override_dh_auto_build:
 	dh_auto_build
 	mv obj/PPSSPPQt ./
 	dh_auto_clean
-	dh_auto_configure -- $(COMPILER)
+	dh_auto_configure -- $(GLES_ENABLE)
 	dh_auto_build
 	chrpath -d obj/PPSSPPSDL
 	mv PPSSPPQt obj/
