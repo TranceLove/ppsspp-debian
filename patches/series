@@ -4,6 +4,6 @@
 05_ffmpeg_shared.patch
 06_ffmpeg_arm.patch
 07_version.patch
-08_assets.patch
+#08_assets.patch
 09_freetype2.patch
 #10_fix_ARM64.patch

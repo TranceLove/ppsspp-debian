@@ -1,6 +1,8 @@
 Description: shared libpng
---- a/Core/Screenshot.cpp
-+++ b/Core/Screenshot.cpp
+Index: ppsspp-git2/Core/Screenshot.cpp
+===================================================================
+--- ppsspp-git2.orig/Core/Screenshot.cpp
++++ ppsspp-git2/Core/Screenshot.cpp
 @@ -21,7 +21,7 @@
  #ifdef USING_QT_UI
  #include <QtGui/QImage>
@@ -10,8 +12,23 @@ Description: shared libpng
  #include "ext/jpge/jpge.h"
  #endif
  
---- a/ext/native/image/png_load.cpp
-+++ b/ext/native/image/png_load.cpp
+Index: ppsspp-git2/Core/TextureReplacer.cpp
+===================================================================
+--- ppsspp-git2.orig/Core/TextureReplacer.cpp
++++ ppsspp-git2/Core/TextureReplacer.cpp
+@@ -18,7 +18,7 @@
+ #ifdef USING_QT_UI
+ #include <QtGui/QImage>
+ #else
+-#include <libpng17/png.h>
++#include <libpng/png.h>
+ #endif
+ 
+ #include <algorithm>
+Index: ppsspp-git2/ext/native/image/png_load.cpp
+===================================================================
+--- ppsspp-git2.orig/ext/native/image/png_load.cpp
++++ ppsspp-git2/ext/native/image/png_load.cpp
 @@ -5,7 +5,7 @@
  #ifdef USING_QT_UI
  #include <QtGui/QImage>
@@ -21,14 +38,3 @@ Description: shared libpng
  #endif
  
  #include "png_load.h"
---- a/Core/TextureReplacer.cpp
-+++ b/Core/TextureReplacer.cpp
-@@ -16,7 +16,7 @@
- // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
- 
- #ifndef USING_QT_UI
--#include <libpng17/png.h>
-+#include <libpng/png.h>
- #endif
- 
- #include <algorithm>
