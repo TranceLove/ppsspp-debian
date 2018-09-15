@@ -1,8 +1,8 @@
 Description: shared libpng
-Index: ppsspp-git2/Core/Screenshot.cpp
+Index: ppsspp-1.6.3/Core/Screenshot.cpp
 ===================================================================
---- ppsspp-git2.orig/Core/Screenshot.cpp
-+++ ppsspp-git2/Core/Screenshot.cpp
+--- ppsspp-1.6.3.orig/Core/Screenshot.cpp
++++ ppsspp-1.6.3/Core/Screenshot.cpp
 @@ -21,7 +21,7 @@
  #ifdef USING_QT_UI
  #include <QtGui/QImage>
@@ -12,42 +12,29 @@ Index: ppsspp-git2/Core/Screenshot.cpp
  #include "ext/jpge/jpge.h"
  #endif
  
-Index: ppsspp-git2/Core/TextureReplacer.cpp
+Index: ppsspp-1.6.3/Core/TextureReplacer.cpp
 ===================================================================
---- ppsspp-git2.orig/Core/TextureReplacer.cpp
-+++ ppsspp-git2/Core/TextureReplacer.cpp
-@@ -18,7 +18,7 @@
- #ifdef USING_QT_UI
- #include <QtGui/QImage>
- #else
+--- ppsspp-1.6.3.orig/Core/TextureReplacer.cpp
++++ ppsspp-1.6.3/Core/TextureReplacer.cpp
+@@ -16,7 +16,7 @@
+ // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
+ 
+ #ifndef USING_QT_UI
 -#include <libpng17/png.h>
 +#include <libpng/png.h>
  #endif
  
  #include <algorithm>
-Index: ppsspp-git2/ext/native/image/png_load.cpp
+Index: ppsspp-1.6.3/ext/native/image/png_load.cpp
 ===================================================================
---- ppsspp-git2.orig/ext/native/image/png_load.cpp
-+++ ppsspp-git2/ext/native/image/png_load.cpp
+--- ppsspp-1.6.3.orig/ext/native/image/png_load.cpp
++++ ppsspp-1.6.3/ext/native/image/png_load.cpp
 @@ -5,7 +5,7 @@
  #ifdef USING_QT_UI
  #include <QtGui/QImage>
  #else
 -#include "libpng17/png.h"
-+#include <libpng/png.h>
++#include "libpng/png.h"
  #endif
  
  #include "png_load.h"
-Index: ppsspp-git2/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
-===================================================================
---- ppsspp-git2.orig/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
-+++ ppsspp-git2/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
-@@ -17,7 +17,7 @@
- 
- #include <algorithm>
- #ifndef USING_QT_UI
--#include <libpng17/png.h>
-+#include <libpng/png.h>
- #include <zlib.h>
- #endif
- #include "data/base64.h"

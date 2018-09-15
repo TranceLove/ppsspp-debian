@@ -1,8 +1,8 @@
-Index: ppsspp-git2/CMakeLists.txt
+Index: ppsspp-1.6.3/CMakeLists.txt
 ===================================================================
---- ppsspp-git2.orig/CMakeLists.txt
-+++ ppsspp-git2/CMakeLists.txt
-@@ -656,9 +656,9 @@ else()
+--- ppsspp-1.6.3.orig/CMakeLists.txt
++++ ppsspp-1.6.3/CMakeLists.txt
+@@ -639,9 +639,9 @@ else()
  	set(LIBZIP_LIBRARY libzip)
  endif()
  
@@ -15,7 +15,7 @@ Index: ppsspp-git2/CMakeLists.txt
  find_package(PackageHandleStandardArgs)
  find_package_handle_standard_args(PNG REQUIRED_VARS PNG_LIBRARY PNG_PNG_INCLUDE_DIR)
  if (PNG_FOUND)
-@@ -666,36 +666,36 @@ if (PNG_FOUND)
+@@ -649,36 +649,36 @@ if (PNG_FOUND)
  else()
  	if(ARM)
  		set(PNG_ARM_INCLUDES
