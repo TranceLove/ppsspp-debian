@@ -38,3 +38,16 @@ Index: ppsspp-git2/ext/native/image/png_load.cpp
  #endif
  
  #include "png_load.h"
+Index: ppsspp-git2/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
+===================================================================
+--- ppsspp-git2.orig/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
++++ ppsspp-git2/Core/Debugger/WebSocket/GPUBufferSubscriber.cpp
+@@ -17,7 +17,7 @@
+ 
+ #include <algorithm>
+ #ifndef USING_QT_UI
+-#include <libpng17/png.h>
++#include <libpng/png.h>
+ #include <zlib.h>
+ #endif
+ #include "data/base64.h"
