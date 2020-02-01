@@ -27,7 +27,9 @@ If you are using the official repo, please also do this after above line:
 4. Back to ppsspp's source tree, say `git checkout v1.9.4`. This is their latest release tag as of 1 Feb 2020
 5. `dpkg-buildpackage -b -a amd64` and take a coffee break
 6. If everything is OK you should have built Debian packages one level above source tree
-7. Take the packages you need for installation, depending whether you want dependency with OpenGL or SDL, and whether you want debug builds. The `ppsspp-common` package must be installed along.
+7. Take the packages you need for installation, depending whether you want dependency with OpenGL or SDL, and whether you want debug builds.
+
+`ppsspp-common` must be installed along. `ppsspp-qt` is a deprecated package, which will point to `ppsspp` - this is not necessary.
 
 Depending the package manager you are using you may be prompted to install additional packages - follow the instructions as necessary.
 
